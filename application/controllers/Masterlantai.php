@@ -9,6 +9,7 @@ class Masterlantai extends CI_Controller {
 		parent::__construct();
 		$this->load->library('Redirect');
 		$this->load->model('M_lantai','',true);
+		$this->load->model('M_gedung','',true);
 		$this->redirect->backToCurrentUser();		
 		$this->redirect->backToLogin();
 
@@ -23,7 +24,7 @@ class Masterlantai extends CI_Controller {
 	public function index()
 	{
 		
-		$this->data['lantai']=$this->M_lantai->getGedung();				
+		$this->data['lantai']=$this->M_lantai->getLantai();				
 		// die(var_dump($this->data));
 		$this->load->view('view_master_lantai',$this->data);
 
@@ -33,6 +34,7 @@ class Masterlantai extends CI_Controller {
 
 	public function tambah()
 	{
+		$this->data['gedung'] = $this->M_gedung->getGedung();
 		$this->load->view('form_lantai',$this->data);
 
 		$this->session->set_userdata('referred_from', current_url());
