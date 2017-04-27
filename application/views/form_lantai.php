@@ -35,16 +35,27 @@ $this->load->view('template/sidebar');
               <div class="box-body">
                 <div class="form-group">
                 <label for="InputGedung">Gedung</label> <?php echo form_error('id_gedung'); ?>
-                  <select class="form-control" name="id_gedung">
-                  <option>Pilih Gedung</option>
-                  <?php  foreach ($gedung as $value) { ?>
-                    <option value="<?php  echo $value['id_gedung'] ?>"><?php  echo $value['nama_gedung'] ?></option>
-                    <?php  } ?>
+                  <select class="form-control" name="id_gedung" <?php echo isset($id_lantai)?"disabled='disabled'":null; ?>>
+                  <?php if (!isset($datalantai[0]['id_gedung'])){ ?>
+                      <option disabled selected value>Pilih Gedung</option>
+                      <?php  foreach ($gedung as $value) { ?>
+                        <option value="<?php  echo $value['id_gedung'] ?>" <?php echo (isset($id_gedung)&&$id_gedung==$value['id_gedung'])?"selected=selected":null;?>> <?php  echo $value['nama_gedung'] ?></option>
+                      <?php  } ?>
+                  <?php }else{ ?>
+                    <option value="<?php echo $datalantai[0]['id_gedung'] ?>"><?php echo $datalantai[0]['nama_gedung'] ?></option>
+                  <?php } ?>
                   </select>
+                  <input type="hidden" name="id_gedung" value="<?php echo isset($datalantai[0]['id_gedung'])?$datalantai[0]['id_gedung']:null; ?>" <?php echo !isset($id_lantai)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
-                  <label for="InputNamaLantai">Lantai</label> <?php echo form_error('nama_lantai'); ?>
-                  <input type="number" class="form-control" id="inputNamaLantai" name="nama_lantai" placeholder="Masukkan nomor lantai" value="<?php echo isset($datalantai[0]['nama_lantai'])?$datalantai[0]['nama_lantai']:null; ?>">
+                  <label for="InputNamaLantai">Lantai</label> <?php echo form_error('nama_lantai');?>
+                  <input type="number" class="form-control" id="inputNamaLantai" name="nama_lantai" placeholder="Masukkan nomor lantai" value="<?php 
+                   if (isset($nama_lantai)) {
+                     echo $nama_lantai;
+                   }else if(isset($datalantai[0]['nama_lantai'])){
+                    echo $datalantai[0]['nama_lantai'];
+                   }
+                  ?>">
                 </div>
 
                 

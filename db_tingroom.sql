@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2017 at 08:45 PM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Apr 27, 2017 at 11:36 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 -- Database: `db_tingroom`
 --
 DROP DATABASE `db_tingroom`;
+CREATE DATABASE IF NOT EXISTS `db_tingroom` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_tingroom`;
 
 -- --------------------------------------------------------
 
@@ -27,7 +29,7 @@ DROP DATABASE `db_tingroom`;
 -- Table structure for table `tb_booking`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_booking` (
+CREATE TABLE `tb_booking` (
   `id_booking` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
@@ -44,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `tb_booking` (
 -- Table structure for table `tb_det_booking`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_det_booking` (
+CREATE TABLE `tb_det_booking` (
   `id_det_booking` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL
@@ -56,11 +58,11 @@ CREATE TABLE IF NOT EXISTS `tb_det_booking` (
 -- Table structure for table `tb_gedung`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_gedung` (
+CREATE TABLE `tb_gedung` (
   `id_gedung` int(11) NOT NULL,
   `nama_gedung` varchar(255) NOT NULL,
   `deleted` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_gedung`
@@ -87,7 +89,7 @@ INSERT INTO `tb_gedung` (`id_gedung`, `nama_gedung`, `deleted`) VALUES
 -- Table structure for table `tb_jadwal`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_jadwal` (
+CREATE TABLE `tb_jadwal` (
   `id_jadwal` int(11) NOT NULL,
   `id_room` int(11) NOT NULL,
   `id_jam` int(11) NOT NULL,
@@ -100,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `tb_jadwal` (
 -- Table structure for table `tb_jam`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_jam` (
+CREATE TABLE `tb_jam` (
   `id_jam` int(11) NOT NULL,
   `jam` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -111,23 +113,43 @@ CREATE TABLE IF NOT EXISTS `tb_jam` (
 -- Table structure for table `tb_lantai`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_lantai` (
+CREATE TABLE `tb_lantai` (
   `id_lantai` int(11) NOT NULL,
   `nama_lantai` varchar(255) NOT NULL,
-  `id_gedung` int(11) NOT NULL
+  `id_gedung` int(11) NOT NULL,
+  `deleted` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_lantai`
+--
+
+INSERT INTO `tb_lantai` (`id_lantai`, `nama_lantai`, `id_gedung`, `deleted`) VALUES
+(1, '10', 1, 0),
+(2, '5', 2, 1),
+(6, '3', 4, 0),
+(7, '12', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_ruang`
+-- Table structure for table `tb_ruangan`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_ruang` (
-  `id_ruang` int(11) NOT NULL,
-  `nama_ruang` varchar(255) NOT NULL,
-  `id_lantai` int(11) NOT NULL
+CREATE TABLE `tb_ruangan` (
+  `id_ruangan` int(11) NOT NULL,
+  `nama_ruangan` varchar(255) NOT NULL,
+  `id_lantai` int(11) NOT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `deleted` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_ruangan`
+--
+
+INSERT INTO `tb_ruangan` (`id_ruangan`, `nama_ruangan`, `id_lantai`, `keterangan`, `deleted`) VALUES
+(1, 'Room A', 1, 'Fasilitas  : AC, Proyektor, Kabel LAN, Kabel Roll, Meja 2, Kursi 3', 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `tb_ruang` (
 -- Table structure for table `tb_user`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_user` (
+CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -145,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `floor` int(11) DEFAULT NULL,
   `level` int(11) NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
@@ -202,10 +224,10 @@ ALTER TABLE `tb_lantai`
   ADD KEY `fk_id_gedung` (`id_gedung`);
 
 --
--- Indexes for table `tb_ruang`
+-- Indexes for table `tb_ruangan`
 --
-ALTER TABLE `tb_ruang`
-  ADD PRIMARY KEY (`id_ruang`),
+ALTER TABLE `tb_ruangan`
+  ADD PRIMARY KEY (`id_ruangan`),
   ADD KEY `fk_id_floor` (`id_lantai`);
 
 --
@@ -228,7 +250,7 @@ ALTER TABLE `tb_booking`
 -- AUTO_INCREMENT for table `tb_gedung`
 --
 ALTER TABLE `tb_gedung`
-  MODIFY `id_gedung` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id_gedung` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tb_jadwal`
 --
@@ -243,17 +265,17 @@ ALTER TABLE `tb_jam`
 -- AUTO_INCREMENT for table `tb_lantai`
 --
 ALTER TABLE `tb_lantai`
-  MODIFY `id_lantai` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lantai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `tb_ruang`
+-- AUTO_INCREMENT for table `tb_ruangan`
 --
-ALTER TABLE `tb_ruang`
-  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_ruangan`
+  MODIFY `id_ruangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -276,7 +298,7 @@ ALTER TABLE `tb_det_booking`
 --
 ALTER TABLE `tb_jadwal`
   ADD CONSTRAINT `fk_id_jam` FOREIGN KEY (`id_jam`) REFERENCES `tb_jam` (`id_jam`),
-  ADD CONSTRAINT `fk_id_room` FOREIGN KEY (`id_room`) REFERENCES `tb_ruang` (`id_ruang`);
+  ADD CONSTRAINT `fk_id_room` FOREIGN KEY (`id_room`) REFERENCES `tb_ruangan` (`id_ruangan`);
 
 --
 -- Constraints for table `tb_lantai`
@@ -285,9 +307,9 @@ ALTER TABLE `tb_lantai`
   ADD CONSTRAINT `fk_id_gedung` FOREIGN KEY (`id_gedung`) REFERENCES `tb_gedung` (`id_gedung`);
 
 --
--- Constraints for table `tb_ruang`
+-- Constraints for table `tb_ruangan`
 --
-ALTER TABLE `tb_ruang`
+ALTER TABLE `tb_ruangan`
   ADD CONSTRAINT `fk_id_floor` FOREIGN KEY (`id_lantai`) REFERENCES `tb_lantai` (`id_lantai`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
