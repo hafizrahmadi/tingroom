@@ -48,6 +48,21 @@
                     </li>
                 </ul>
             </li>
+            <!-- <li class="treeview <?php echo isset($masterjdwl)?'active':null; ?>" >
+                <a href="#">
+                    <i class="fa fa-calendar" ></i> <span>Data Penjadwalan Ruangan</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li <?php echo isset($actjam)?"class='active'":null; ?>>
+                        <a href="<?php echo site_url('masterjam') ?>"><i class="fa fa-clock-o"></i> Jam</a>
+                    </li>
+                </ul>
+            </li> -->
+            <li <?php echo isset($masterjdwl)?"class='active'":null; ?>>
+                <a href="<?php echo site_url('masterjadwal') ?>">
+                    <i class="fa fa-calendar" ></i> <span>Data Jadwal Ruangan</span>
+                </a>
+            </li> 
             <li>
                 <a href="#">
                     <i class="fa fa-user"></i> <span>Data Pengguna</span>

@@ -15,17 +15,29 @@ class M_ruangan extends CI_Model {
 		$query = "select r.id_ruangan, r.nama_ruangan, r.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung, r.keterangan
 		from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung
 		join tb_ruangan r on r.id_lantai = l.id_lantai
-		where l.deleted=0";
+		where r.deleted=0";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
 
-	// public function getIDLantai($id)
-	// {
-	// 	$query = "select l.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung where l.id_lantai = ".$id." and l.deleted = 0";
-	// 	$result = $this->db->query($query);
-	// 	return $result->result_array();
-	// }
+	public function getIDRuangan($id)
+	{
+		$query = "select r.id_ruangan, r.nama_ruangan, r.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung, r.keterangan 
+		from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung 
+		join tb_ruangan r on r.id_lantai = l.id_lantai
+		where r.id_ruangan = ".$id." and r.deleted = 0";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+
+	public function getRuanganinLantai($id)
+	{
+		$query = "select r.id_lantai, l.nama_lantai, r.id_ruangan, r.nama_ruangan from tb_lantai l join tb_ruangan r on r.id_lantai=l.id_lantai where r.id_lantai = $id and r.deleted = 0";
+		
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+
 
 	public function setRuangan($data)
 	{
@@ -41,15 +53,15 @@ class M_ruangan extends CI_Model {
 		}
 	}
 
-	// public function deleteLantai($id)
-	// {
-	// 	$query = "UPDATE TB_lantai SET DELETED=1 WHERE ID_lantai = ".$id;
-	// 	if ($this->db->query($query)) {
-	// 		return true;
-	// 	}else{
-	// 		return false;
-	// 	}
-	// }
+	public function deleteRuangan($id)
+	{
+		$query = "UPDATE TB_ruangan SET DELETED=1 WHERE ID_ruangan = ".$id;
+		if ($this->db->query($query)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 }
 

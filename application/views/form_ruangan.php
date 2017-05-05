@@ -36,16 +36,16 @@ $this->load->view('template/sidebar');
                 <div class="form-group">
                 <label for="InputGedung">Gedung</label> <?php echo form_error('id_gedung'); ?>
                   <select class="form-control" name="id_gedung" id="id_gedung" <?php echo isset($id_ruangan)?"disabled='disabled'":null; ?>>
-                  <?php if (!isset($datalantai[0]['id_gedung'])){ ?>
+                  <?php if (!isset($dataruangan[0]['id_gedung'])){ ?>
                       <option disabled selected value>Pilih Gedung</option>
                       <?php  foreach ($gedung as $value) { ?>
                         <option value="<?php  echo $value['id_gedung'] ?>" <?php echo (isset($id_gedung)&&$id_gedung==$value['id_gedung'])?"selected=selected":null;?>> <?php  echo $value['nama_gedung'] ?></option>
                       <?php  } ?>
                   <?php }else{ ?>
-                    <option value="<?php echo $datalantai[0]['id_gedung'] ?>"><?php echo $datalantai[0]['nama_gedung'] ?></option>
+                    <option value="<?php echo $dataruangan[0]['id_gedung'] ?>"><?php echo $dataruangan[0]['nama_gedung'] ?></option>
                   <?php } ?>
                   </select>
-                  <input type="hidden" name="id_gedung" value="<?php echo isset($datalantai[0]['id_gedung'])?$datalantai[0]['id_gedung']:null; ?>" <?php echo !isset($id_lantai)?"disabled='disabled'":null; ?>>
+                  <input type="hidden" name="id_gedung" value="<?php echo isset($dataruangan[0]['id_gedung'])?$dataruangan[0]['id_gedung']:null; ?>" <?php echo !isset($id_ruangan)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
                 <label for="InputLantai">Lantai</label> <?php echo form_error('id_lantai'); ?>
@@ -53,13 +53,13 @@ $this->load->view('template/sidebar');
                   <?php if (!isset($dataruangan[0]['id_lantai'])){ ?>
                       <option disabled selected value>Pilih Lantai</option>
                       <?php  /*foreach ($lantai as $value) { ?>
-                        <option value="<?php  echo $value['id_lantai'] ?>" <?php echo (isset($id_lantai)&&$id_lantai==$value['id_lantai'])?"selected=selected":null;?>> <?php  echo $value['nama_lantai'] ?></option>
+                        <option value="<?php  echo $value['id_lantai'] ?>" <?php echo (isset($id_ruangan)&&$id_lantai==$value['id_lantai'])?"selected=selected":null;?>> <?php  echo $value['nama_lantai'] ?></option>
                       <?php  } */?>
                   <?php }else{ ?>
-                    <option value="<?php echo $datalantai[0]['id_gedung'] ?>"><?php echo $datalantai[0]['nama_gedung'] ?></option>
+                    <option value="<?php echo $dataruangan[0]['id_lantai'] ?>"><?php echo $dataruangan[0]['nama_lantai'] ?></option>
                   <?php } ?>
                   </select>
-                  <input type="hidden" name="id_gedung" value="<?php echo isset($datalantai[0]['id_gedung'])?$datalantai[0]['id_gedung']:null; ?>" <?php echo !isset($id_lantai)?"disabled='disabled'":null; ?>>
+                  <input type="hidden" name="id_lantai" value="<?php echo isset($dataruangan[0]['id_lantai'])?$dataruangan[0]['id_lantai']:null; ?>" <?php echo !isset($id_ruangan)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
                   <label for="InputNamaRuangan">Ruangan</label> <?php echo form_error('nama_ruangan');?>
@@ -101,7 +101,7 @@ $this->load->view('template/js');
 ?>
 
 <!-- DataTables -->
-<script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datatables/dataTables.min.js') ?>"></script>
+<!-- <script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datatables/dataTables.min.js') ?>"></script> -->
 
 <script>
   $(function () {

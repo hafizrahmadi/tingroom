@@ -46,7 +46,6 @@ class Masterruangan extends CI_Controller {
 		$id_gedung = $this->input->post('id_gedung');
 		$lantai = $this->M_lantai->getLantaiinGedung($id_gedung);
 		echo json_encode($lantai);
-
 	}
 
 	public function prosesform($id=null){
@@ -85,44 +84,37 @@ class Masterruangan extends CI_Controller {
 				redirect('masterruangan','refresh');
 			}else{
 				$data = array(
-						'id_lantai' => $id,
-						'nama_lantai' => $this->data['nama_lantai']
+						'id_ruangan' => $id,
+						'nama_ruangan' => $this->data['nama_ruangan'],
+						'id_lantai' => $this->data['id_lantai'],
+						'keterangan' => $this->data['keterangan'],
 					);
-				$this->M_lantai->setLantai($data);
-				echo "<script>alert('Data Lantai telah diperbaharui');</script>";
+				$this->M_ruangan->setRuangan($data);
+				echo "<script>alert('Data Ruangan telah diperbaharui');</script>";
 
 				redirect('masterruangan','refresh');
 			}
 		}
 	}
 
-	// public function edit($id)
-	// {
-	// 	$this->data['id_lantai'] = $id;
-	// 	$this->data['datalantai'] = $this->M_lantai->getIDLantai($id);
-	// 	$this->data['gedung'] = $this->M_gedung->getGedung();
+	public function edit($id)
+	{
+		$this->data['id_ruangan'] = $id;
+		$this->data['dataruangan'] = $this->M_ruangan->getIDRuangan($id);
 		
-	// 	$this->load->view('form_lantai',$this->data);
+		// die(var_dump($this->data['dataruangan']));
+		$this->load->view('form_ruangan',$this->data);
 
-	// 	$this->session->set_userdata('referred_from', current_url());
-	// }
+		$this->session->set_userdata('referred_from', current_url());
+	}
 
-	// function validate_gedung($ged){
-	// 	if ($ged=="none") {
-	// 		$this->form_validation->set_message('validate_wilayah', 'The Wilayah field is required.');
-	// 		return false;
-	// 	}else{
-	// 		return true;
-	// 	}
-	// }
+	public function hapus($id)
+	{
+		$this->M_ruangan->deleteRuangan($id);
+		echo "<script>alert('Data Ruangan telah terhapus');</script>";
 
-	// public function hapus($id)
-	// {
-	// 	$this->M_lantai->deleteLantai($id);
-	// 	echo "<script>alert('Data Lantai telah terhapus');</script>";
-
-	// 	redirect('masterlantai','refresh');
-	// }
+		redirect('masterruangan','refresh');
+	}
 }
 
 /* End of file KategoriBarang.php */

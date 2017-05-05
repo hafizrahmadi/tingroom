@@ -56,7 +56,7 @@ $this->load->view('template/js');
 ?>
 
 <!-- DataTables -->
-<script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datatables/dataTables.min.js') ?>"></script>
+<!--<script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datatables/dataTables.min.js') ?>"></script>-->
 
 <script>
   $(function () {
