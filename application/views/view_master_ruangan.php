@@ -32,6 +32,7 @@ $this->load->view('template/sidebar');
             </div>
         </div>
         <div class="box-body">
+         <div class="table-responsive">
             <table id="tabel" class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -39,7 +40,9 @@ $this->load->view('template/sidebar');
                         <th>Nama Gedung</th>
                         <th>Lantai</th>
                         <th>Nama Ruangan</th>
-                        <th>Keterangan</th>
+                        <th>Jml Board</th>
+                        <th>Jml Proyektor</th>
+                        <th>Kapasitas</th>
                         <th class="no-sort">Aksi</th>
                     </tr>
                 </thead>
@@ -56,7 +59,9 @@ $this->load->view('template/sidebar');
                         <td><?php echo $value['nama_gedung'] ?></td>
                         <td><?php echo $value['nama_lantai'] ?></td>
                         <td><?php echo $value['nama_ruangan'] ?></td>
-                        <td><?php echo $value['keterangan'] ?></td>
+                        <td><?php echo $value['board'] ?></td>
+                        <td><?php echo $value['proyektor'] ?></td>
+                        <td><?php echo $value['kapasitas'] ?></td>
                         <td>
                             <div class="btn-group">
                              <a href="<?php echo site_url('masterruangan/edit/'.$value['id_ruangan']) ?>">
@@ -74,7 +79,9 @@ $this->load->view('template/sidebar');
                     ?>
                 </tbody>
             </table>
-        </div><!-- /.box-body -->
+        </div>
+    </div>
+        <!-- /.box-body -->
         <!-- <div class="box-footer">
             
         </div> --><!-- /.box-footer-->
@@ -96,7 +103,7 @@ $this->load->view('template/js');
 
     $('#tabel').dataTable({
         "columnDefs": [
-        { "targets": 5, "orderable": false}
+        { "targets": 7, "orderable": false}
       ]
       // "paging": true,
       // "lengthChange": false,

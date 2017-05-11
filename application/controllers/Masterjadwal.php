@@ -63,8 +63,8 @@ class Masterjadwal extends CI_Controller {
 		$this->form_validation->set_rules('id_ruangan', 'Ruangan', 'required'
 			,array('required'=>'Ruangan harus dipilih.'));
 
-		$this->form_validation->set_rules('jam_awal','Jam Awal','callback_cek_jam_awal[$id_ruang]');
-		$this->form_validation->set_rules('jam_akhir','Jam Akhir','callback_cek_jam_akhir[$id_ruang,jam_awal]');
+		$this->form_validation->set_rules('jam_awal','Jam Awal','required|callback_cek_jam_awal[$id_ruang]',array('required'=>'Jam Awal harus dipilih.'));
+		$this->form_validation->set_rules('jam_akhir','Jam Akhir','required|callback_cek_jam_akhir[$id_ruang,jam_awal]',array('required'=>'Jam Akhir harus dipilih.'));
 
 		$this->data['jam_awal'] = $this->input->post('jam_awal',true);
 		$this->data['jam_akhir'] = $this->input->post('jam_akhir',true);

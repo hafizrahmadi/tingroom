@@ -30,11 +30,13 @@ $this->load->view('template/sidebar');
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <a href=""><button class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" style=""></i> Tambah Data</button></a>
             </div> -->
+            <small>(Kolom dengan tanda <span style="color:red;">*</span> wajib dipilih / diisi)</small>
         </div>
          <form role="form" action="<?php echo !isset($id_ruangan)?site_url('masterruangan/prosesform'):site_url('masterruangan/prosesform/'.$id_ruangan) ;?>" method="post">
               <div class="box-body">
+              <!-- <label>Keterangan : <span style="color:red;">*</span> wajib dipilih / diisi</label> -->
                 <div class="form-group">
-                <label for="InputGedung">Gedung</label> <?php echo form_error('id_gedung'); ?>
+                <label for="InputGedung">Gedung<span style="color:red;">*</span></label> <?php echo form_error('id_gedung'); ?>
                   <select class="form-control" name="id_gedung" id="id_gedung" <?php echo isset($id_ruangan)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($dataruangan[0]['id_gedung'])){ ?>
                       <option disabled selected value>Pilih Gedung</option>
@@ -48,7 +50,7 @@ $this->load->view('template/sidebar');
                   <input type="hidden" name="id_gedung" value="<?php echo isset($dataruangan[0]['id_gedung'])?$dataruangan[0]['id_gedung']:null; ?>" <?php echo !isset($id_ruangan)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
-                <label for="InputLantai">Lantai</label> <?php echo form_error('id_lantai'); ?>
+                <label for="InputLantai">Lantai<span style="color:red;">*</span></label> <?php echo form_error('id_lantai'); ?>
                   <select class="form-control" name="id_lantai" id="id_lantai" <?php echo isset($id_ruangan)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($dataruangan[0]['id_lantai'])){ ?>
                       <option disabled selected value>Pilih Lantai</option>
@@ -62,7 +64,7 @@ $this->load->view('template/sidebar');
                   <input type="hidden" name="id_lantai" value="<?php echo isset($dataruangan[0]['id_lantai'])?$dataruangan[0]['id_lantai']:null; ?>" <?php echo !isset($id_ruangan)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
-                  <label for="InputNamaRuangan">Ruangan</label> <?php echo form_error('nama_ruangan');?>
+                  <label for="InputNamaRuangan">Ruangan<span style="color:red;">*</span></label> <?php echo form_error('nama_ruangan');?>
                   <input type="text" class="form-control" id="inputNamaruangan" name="nama_ruangan" placeholder="Masukkan nama ruangan" value="<?php 
                    if (isset($nama_ruangan)) {
                      echo $nama_ruangan;
@@ -72,12 +74,32 @@ $this->load->view('template/sidebar');
                   ?>">
                 </div>
                  <div class="form-group">
-                  <label for="InputKeterangan">Keterangan</label> <?php echo form_error('keterangan');?>
-                  <input type="text" class="form-control" id="inputKeterangan" name="keterangan" placeholder="Masukkan keterangan ruangan" value="<?php 
-                   if (isset($keterangan)) {
-                     echo $keterangan;
-                   }else if(isset($dataruangan[0]['keterangan'])){
-                    echo $dataruangan[0]['keterangan'];
+                  <label for="InputBoard">Jumlah Board</label> <?php echo form_error('board');?>
+                  <input type="text" class="form-control" id="inputboard" name="board" placeholder="Masukkan jumlah board" value="<?php 
+                   if (isset($board)) {
+                     echo $board;
+                   }else if(isset($dataruangan[0]['board'])){
+                    echo $dataruangan[0]['board'];
+                   }
+                  ?>">
+                </div>
+                <div class="form-group">
+                  <label for="InputProyektor">Jumlah Proyektor</label> <?php echo form_error('proyektor');?>
+                  <input type="text" class="form-control" id="inputproyektor" name="proyektor" placeholder="Masukkan jumlah proyektor" value="<?php 
+                   if (isset($proyektor)) {
+                     echo $proyektor;
+                   }else if(isset($dataruangan[0]['proyektor'])){
+                    echo $dataruangan[0]['proyektor'];
+                   }
+                  ?>">
+                </div>
+                <div class="form-group">
+                  <label for="InputKapasitas">Kapasitas</label> <?php echo form_error('kapasitas');?>
+                  <input type="text" class="form-control" id="inputkapasitas" name="kapasitas" placeholder="Masukkan jumlah kapasitas" value="<?php 
+                   if (isset($kapasitas)) {
+                     echo $kapasitas;
+                   }else if(isset($dataruangan[0]['kapasitas'])){
+                    echo $dataruangan[0]['kapasitas'];
                    }
                   ?>">
                 </div>

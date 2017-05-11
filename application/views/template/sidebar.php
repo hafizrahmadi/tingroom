@@ -58,6 +58,11 @@
                     </li>
                 </ul>
             </li> -->
+            <li <?php echo isset($masterunit)?"class='active'":null; ?>>
+                <a href="<?php echo site_url('masterunit') ?>">
+                    <i class="fa fa-group" ></i> <span>Data Jadwal Unit</span>
+                </a>
+            </li>
             <li <?php echo isset($masterjdwl)?"class='active'":null; ?>>
                 <a href="<?php echo site_url('masterjadwal') ?>">
                     <i class="fa fa-calendar" ></i> <span>Data Jadwal Ruangan</span>

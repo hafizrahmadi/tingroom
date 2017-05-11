@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{		
-		
+		// die(var_dump($this->data['session']));
 		$this->data['home'] = 'active';
 		// die(var_dump($data));
 		$this->load->view('view_dashboard1',$this->data);

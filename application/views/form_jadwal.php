@@ -32,12 +32,13 @@ $this->load->view('template/sidebar');
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <a href=""><button class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" style=""></i> Tambah Data</button></a>
             </div> -->
+            <small>(Kolom dengan tanda <span style="color:red;">*</span> wajib dipilih / diisi)</small>
         </div>
 
          <form role="form" action="<?php echo !isset($id_jadwal)?site_url('masterjadwal/prosesform'):site_url('masterjadwal/prosesform/'.$id_jadwal) ;?>" method="post">
               <div class="box-body">
                 <div class="form-group">
-                <label for="InputGedung">Gedung</label> <?php echo form_error('id_gedung'); ?>
+                <label for="InputGedung">Gedung <span style="color:red;">*</span></label> <?php echo form_error('id_gedung'); ?>
                   <select class="form-control" name="id_gedung" id="id_gedung" <?php echo isset($id_jadwal)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($datajadwal[0]['id_gedung'])){ ?>
                       <option disabled selected value>Pilih Gedung</option>
@@ -52,7 +53,7 @@ $this->load->view('template/sidebar');
                 </div>
 
                 <div class="form-group">
-                <label for="InputLantai">Lantai</label> <?php echo form_error('id_lantai'); ?>
+                <label for="InputLantai">Lantai<span style="color:red;">*</span></label> <?php echo form_error('id_lantai'); ?>
                   <select class="form-control" name="id_lantai" id="id_lantai" <?php echo isset($id_jadwal)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($datajadwal[0]['id_lantai'])){ ?>
                       <option disabled selected value>Pilih Lantai</option>
@@ -63,7 +64,7 @@ $this->load->view('template/sidebar');
                   <input type="hidden" name="id_lantai" value="<?php echo isset($datajadwal[0]['id_lantai'])?$datajadwal[0]['id_lantai']:null; ?>" <?php echo !isset($id_jadwal)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
-                <label for="InputRuangan">Ruangan</label> <?php echo form_error('id_ruangan'); ?>
+                <label for="InputRuangan">Ruangan<span style="color:red;">*</span></label> <?php echo form_error('id_ruangan'); ?>
                   <select class="form-control" name="id_ruangan" id="id_ruangan" <?php echo isset($id_jadwal)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($datajadwal[0]['id_ruangan'])){ ?>
                       <option disabled selected value>Pilih Ruangan</option>
@@ -76,10 +77,16 @@ $this->load->view('template/sidebar');
                 <div class="bootstrap-timepicker row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="InputJamAwal">Jam Awal</label> <?php echo form_error('jam_awal'); ?>
+                      <label for="InputJamAwal">Jam Awal<span style="color:red;">*</span></label> <?php echo form_error('jam_awal'); ?>
                       <div class="input-group">
                         <input type="text" name="jam_awal" class="form-control timepicker" id="jam_awal" 
-                        value="<?php  echo isset($datajadwal[0]['jam_awal'])?$datajadwal[0]['jam_awal']:null; ?>">
+                        value="<?php 
+                          if (isset($jam_awal)) {
+                             echo $jam_awal;
+                           }else if(isset($dataruangan[0]['jam_awal'])){
+                            echo $dataruangan[0]['jam_awal'];
+                           }
+                         ?>">
 
                         <div class="input-group-addon">
                           <i class="fa fa-clock-o"></i>
@@ -89,10 +96,15 @@ $this->load->view('template/sidebar');
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="InputJamAkhir">Jam Akhir</label> <?php echo form_error('jam_akhir'); ?>
+                      <label for="InputJamAkhir">Jam Akhir<span style="color:red;">*</span></label> <?php echo form_error('jam_akhir'); ?>
                       <div class="input-group">
-                        <input type="text" name="jam_akhir" class="form-control timepicker" id="jam_akhir"
-                        value="<?php  echo isset($datajadwal[0]['jam_akhir'])?$datajadwal[0]['jam_akhir']:null; ?>">
+                        <input type="text" name="jam_akhir" class="form-control timepicker" id="jam_akhir" value="<?php 
+                          if (isset($jam_akhir)) {
+                             echo $jam_akhir;
+                           }else if(isset($dataruangan[0]['jam_akhir'])){
+                            echo $dataruangan[0]['jam_akhir'];
+                           }
+                         ?>">
 
                         <div class="input-group-addon">
                           <i class="fa fa-clock-o"></i>

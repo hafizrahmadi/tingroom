@@ -32,6 +32,7 @@ $this->load->view('template/sidebar');
             </div>
         </div>
         <div class="box-body">
+         <div class="table-responsive">
             <table id="tabel" class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -83,9 +84,11 @@ $this->load->view('template/sidebar');
                     ?>
                 </tbody>
             </table>
-        </div><!-- /.box-body -->
+        </div>
+      </div>
+        <!-- /.box-body -->
         <!-- <div class="box-footer">
-            
+           
         </div> --><!-- /.box-footer-->
     </div><!-- /.box -->
 

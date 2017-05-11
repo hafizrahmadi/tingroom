@@ -30,11 +30,12 @@ $this->load->view('template/sidebar');
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <a href=""><button class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" style=""></i> Tambah Data</button></a>
             </div> -->
+            <small>(Kolom dengan tanda <span style="color:red;">*</span> wajib dipilih / diisi)</small>
         </div>
          <form role="form" action="<?php echo !isset($id_lantai)?site_url('masterlantai/prosesform'):site_url('masterlantai/prosesform/'.$id_lantai) ;?>" method="post">
               <div class="box-body">
                 <div class="form-group">
-                <label for="InputGedung">Gedung</label> <?php echo form_error('id_gedung'); ?>
+                <label for="InputGedung">Gedung<span style="color:red;">*</span></label> <?php echo form_error('id_gedung'); ?>
                   <select class="form-control" name="id_gedung" <?php echo isset($id_lantai)?"disabled='disabled'":null; ?>>
                   <?php if (!isset($datalantai[0]['id_gedung'])){ ?>
                       <option disabled selected value>Pilih Gedung</option>
@@ -48,7 +49,7 @@ $this->load->view('template/sidebar');
                   <input type="hidden" name="id_gedung" value="<?php echo isset($datalantai[0]['id_gedung'])?$datalantai[0]['id_gedung']:null; ?>" <?php echo !isset($id_lantai)?"disabled='disabled'":null; ?>>
                 </div>
                 <div class="form-group">
-                  <label for="InputNamaLantai">Lantai</label> <?php echo form_error('nama_lantai');?>
+                  <label for="InputNamaLantai">Lantai<span style="color:red;">*</span></label> <?php echo form_error('nama_lantai');?>
                   <input type="number" class="form-control" id="inputNamaLantai" name="nama_lantai" placeholder="Masukkan nomor lantai" value="<?php 
                    if (isset($nama_lantai)) {
                      echo $nama_lantai;

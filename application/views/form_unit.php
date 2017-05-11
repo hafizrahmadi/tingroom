@@ -9,13 +9,13 @@ $this->load->view('template/sidebar');
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Pengelolaan Data Gedung
+        Pengelolaan Data Unit
     </h1>
     
     <ol class="breadcrumb">
         <li><a href="<?php echo site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <!-- <li><a href="#"></a></li> -->
-        <li class="active">Pengelolaan Data Gedung</li>
+        <li class="active">Pengelolaan Data Unit</li>
     </ol>
 </section>
 
@@ -25,18 +25,18 @@ $this->load->view('template/sidebar');
     <!-- Default box -->
     <div class="box" >
         <div class="box-header with-border">
-            <h3 class="box-title">Data Gedung</h3>
+            <h3 class="box-title">Data Unit</h3>
             <!-- <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <a href=""><button class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" style=""></i> Tambah Data</button></a>
             </div> -->
             <small>(Kolom dengan tanda <span style="color:red;">*</span> wajib dipilih / diisi)</small>
         </div>
-         <form role="form" action="<?php echo !isset($id_gedung)?site_url('mastergedung/prosesform'):site_url('mastergedung/prosesform/'.$id_gedung) ;?>" method="post">
+         <form role="form" action="<?php echo !isset($id_unit)?site_url('masterunit/prosesform'):site_url('masterunit/prosesform/'.$id_unit) ;?>" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="InputNamaGedung">Nama Gedung<span style="color:red;">*</span></label> <?php echo form_error('nama_gedung'); ?>
-                  <input type="text" class="form-control" id="inputNamaGedung" name="nama_gedung" placeholder="Masukkan nama gedung" value="<?php echo isset($datagedung[0]['nama_gedung'])?$datagedung[0]['nama_gedung']:null; ?>">
+                  <label for="InputNamaUnit">Nama Unit<span style="color:red;">*</span></label> <?php echo form_error('nama_unit'); ?>
+                  <input type="text" class="form-control" id="inputNamaUnit" name="nama_unit" placeholder="Masukkan nama unit" value="<?php echo isset($dataunit[0]['nama_unit'])?$dataunit[0]['nama_unit']:null; ?>">
                 </div>
                 
               </div>

@@ -61,7 +61,9 @@ class Masterruangan extends CI_Controller {
 		$this->data['nama_ruangan'] = $this->input->post('nama_ruangan',true);
 		$this->data['id_gedung'] = $this->input->post('id_gedung',true);
 		$this->data['id_lantai'] = $this->input->post('id_lantai',true);
-		$this->data['keterangan'] = $this->input->post('keterangan',true);
+		$this->data['board'] = $this->input->post('board',true);
+		$this->data['proyektor'] = $this->input->post('proyektor',true);
+		$this->data['kapasitas'] = $this->input->post('kapasitas',true);
 
 		// die(var_dump($this->data));
 		if ($this->form_validation->run() == FALSE) {
@@ -76,7 +78,9 @@ class Masterruangan extends CI_Controller {
 				$data = array(
 					'nama_ruangan' => $this->data['nama_ruangan'],
 					'id_lantai' => $this->data['id_lantai'],
-					'keterangan' => $this->data['keterangan'],
+					'board' => $this->data['board'],
+					'proyektor' => $this->data['proyektor'],
+					'kapasitas' => $this->data['kapasitas']
 					);
 				$this->M_ruangan->setRuangan($data);
 				echo "<script>alert('Data Lantai baru telah ditambahkan');</script>";
@@ -87,7 +91,9 @@ class Masterruangan extends CI_Controller {
 						'id_ruangan' => $id,
 						'nama_ruangan' => $this->data['nama_ruangan'],
 						'id_lantai' => $this->data['id_lantai'],
-						'keterangan' => $this->data['keterangan'],
+						'board' => $this->data['board'],
+						'proyektor' => $this->data['proyektor'],
+						'kapasitas' => $this->data['kapasitas'],
 					);
 				$this->M_ruangan->setRuangan($data);
 				echo "<script>alert('Data Ruangan telah diperbaharui');</script>";
