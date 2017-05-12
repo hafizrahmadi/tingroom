@@ -98,8 +98,10 @@ class Auth extends CI_Controller {
 		$this->redirect->backToCurrent();
 		$this->form_validation->set_error_delimiters('<div class="text-red">','</div>');
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
+		$this->form_validation->set_rules('email', 'Email', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
 		$this->form_validation->set_rules('password', 'Password', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
-		
+		$this->form_validation->set_rules('conf_password', 'Konfirmasi Password', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
+
 		if ($this->form_validation->run()==FALSE) {
 			$this->load->view('form_login_backend');
 		}else{
