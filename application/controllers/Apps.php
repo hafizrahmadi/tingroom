@@ -37,6 +37,11 @@ class Apps extends CI_Controller {
 	}
 
 	public function book_demand(){
-		var_dump($this->input->post('jadwal'));
+		// var_dump($this->input->post('jadwal'));
+		$data['ruangan'] = $this->M_Ruangan->getIDRuangan($this->input->post('id_ruangan'));
+		$data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($this->input->post('jadwal'));
+		// var_dump($data['jadwal']);
+		$this->load->view('form_booking',$data);
 	}
 }
+

@@ -18,7 +18,7 @@
             <div class="col-xs-3 t-white i-projector"><?php echo $value['proyektor']==0?"None":"Available" ?></div>
             <div class="col-xs-3 t-white i-chair"><?php echo $value['kapasitas'] ?> person</div>
           </div>
-          <div class="col-xs-12 collapse" id="collapseDiv<?php echo $no_ruang; ?>">
+          <div class="col-xs-12 collapse" id="collapseDiv<?php echo $no_ruang; ?>" value="<?php echo $value['id_ruangan']; ?>">
             <div class="funkyradio">
             <?php
 
@@ -62,7 +62,8 @@
         
        <div class="col-xs-12  menu-fixed-bot" >
           <span>
-            <button class="btn  btn-block btn-turquoise" type="submit" data-href="booking-3.html">Continue</button> 
+            <input type="hidden" name="id_ruangan" value="">
+            <button class="btn  btn-block btn-turquoise" type="submit" data-href="#">Continue</button> 
           </span>
         </div>
       </form>
