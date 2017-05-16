@@ -41,7 +41,7 @@ $this->load->view('template/sidebar');
                         <th>Lantai</th>
                         <th>Nama Ruangan</th>
                         <th>Jml Board</th>
-                        <th>Jml Proyektor</th>
+                        <th>Proyektor</th>
                         <th>Kapasitas</th>
                         <th class="no-sort">Aksi</th>
                     </tr>
@@ -60,7 +60,7 @@ $this->load->view('template/sidebar');
                         <td><?php echo $value['nama_lantai'] ?></td>
                         <td><?php echo $value['nama_ruangan'] ?></td>
                         <td><?php echo $value['board'] ?></td>
-                        <td><?php echo $value['proyektor'] ?></td>
+                        <td><?php echo $value['proyektor']==0?"None":"Available"; ?></td>
                         <td><?php echo $value['kapasitas'] ?></td>
                         <td>
                             <div class="btn-group">

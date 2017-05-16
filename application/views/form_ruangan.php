@@ -84,14 +84,13 @@ $this->load->view('template/sidebar');
                   ?>">
                 </div>
                 <div class="form-group">
-                  <label for="InputProyektor">Jumlah Proyektor</label> <?php echo form_error('proyektor');?>
-                  <input type="text" class="form-control" id="inputproyektor" name="proyektor" placeholder="Masukkan jumlah proyektor" value="<?php 
-                   if (isset($proyektor)) {
-                     echo $proyektor;
-                   }else if(isset($dataruangan[0]['proyektor'])){
-                    echo $dataruangan[0]['proyektor'];
-                   }
-                  ?>">
+                  <label for="InputProyektor">Ketersediaan Proyektor</label> <?php echo form_error('proyektor');?>
+                  <select class="form-control" name="proyektor" id="proyektor">                  
+                    <option disabled selected value>&nbsp;</option>
+                    <option value="0" <?php echo (isset($proyektor)&&$proyektor==0)||(isset($dataruangan[0]['proyektor'])&&$dataruangan[0]['proyektor']==0)?"selected=selected":null;?>>None</option>    
+                    <option value="1" <?php echo (isset($proyektor)&&$proyektor==1)||(isset($dataruangan[0]['proyektor'])&&$dataruangan[0]['proyektor']==1)?"selected=selected":null;?>>Available</option>                  
+                  </select>
+
                 </div>
                 <div class="form-group">
                   <label for="InputKapasitas">Kapasitas</label> <?php echo form_error('kapasitas');?>

@@ -15,7 +15,7 @@
     <meta name="googlebot" content="index,follow">
 
     <!-- Title -->
-    <title>Guri Guri Nyoi &mdash; Bootstrap 3 iPhone App Templates</title>
+    <title>XL Tingroom</title>
 
     <!-- Templates core CSS -->
     <link href="<?php echo base_url('assets/css/application2.css');?>" rel="stylesheet" type="text/css">

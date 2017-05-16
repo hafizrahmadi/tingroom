@@ -15,7 +15,8 @@ class M_ruangan extends CI_Model {
 		$query = "select r.id_ruangan, r.nama_ruangan, r.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung, r.board,r.proyektor,r.kapasitas
 		from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung
 		join tb_ruangan r on r.id_lantai = l.id_lantai
-		where r.deleted=0";
+		where r.deleted=0
+		order by r.id_lantai asc";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -30,9 +31,9 @@ class M_ruangan extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function getRuanganinLantai($id)
+	public function getRuanganInLantai($id)
 	{
-		$query = "select r.id_lantai, l.nama_lantai, r.id_ruangan, r.nama_ruangan from tb_lantai l join tb_ruangan r on r.id_lantai=l.id_lantai where r.id_lantai = $id and r.deleted = 0";
+		$query = "select r.id_lantai, l.nama_lantai, r.id_ruangan, r.nama_ruangan, r.board,r.proyektor,r.kapasitas from tb_lantai l join tb_ruangan r on r.id_lantai=l.id_lantai where r.id_lantai = $id and r.deleted = 0";
 		
 		$result = $this->db->query($query);
 		return $result->result_array();

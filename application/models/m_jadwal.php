@@ -21,6 +21,17 @@ class M_jadwal extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getJadwalInLantai($id_lantai){
+		$query = "select j.id_jadwal,g.nama_gedung, l.id_lantai, l.nama_lantai, r.nama_ruangan, j.id_ruangan, j.jam_awal, j.jam_akhir, j.status
+					from tb_jadwal j join tb_ruangan r on j.id_ruangan = r.id_ruangan
+						join tb_lantai l on r.id_lantai = l.id_lantai
+						join tb_gedung g on l.id_gedung = g.id_gedung
+					where j.deleted=0 
+						and l.id_lantai = $id_lantai";
+		$result = $this->db->query($query);
+		return $result->result_array();
+	}
+
 	public function cekJamAwal($str,$id_ruangan,$id_jadwal=null){
 		
 		$query = "select g.nama_gedung, l.nama_lantai, r.nama_ruangan, j.id_ruangan, j.jam_awal, j.jam_akhir, j.status

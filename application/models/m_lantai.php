@@ -12,7 +12,10 @@ class M_lantai extends CI_Model {
 
 	public function getLantai()
 	{
-		$query = "select l.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung where l.deleted=0";
+		$query = "select l.id_lantai, l.nama_lantai, l.id_gedung, g.nama_gedung 
+			from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung 
+			where l.deleted=0
+			order by l.id_gedung";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}

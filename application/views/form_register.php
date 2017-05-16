@@ -15,7 +15,7 @@
     <meta name="googlebot" content="index,follow">
 
     <!-- Title -->
-    <title>Guri Guri Nyoi &mdash; Bootstrap 3 iPhone App Templates</title>
+    <title>XL Tingroom</title>
 
     <!-- Templates core CSS -->
     <link href="<?php echo base_url('assets/css/application2.css');?>" rel="stylesheet" type="text/css">
@@ -97,16 +97,15 @@
                   <label for="InputPassword">Password<span style="color:red;">*</span></label> <?php echo form_error('password'); ?>
                   <div class="input-group">                 
                     <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-unlock-alt fa-fw"></i></span>
-                    <input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Masukkan password">
+                    <input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Masukkan password" value="<?php echo isset($password)?$password:null; ?>" >
                   </div> <!-- /.form-group -->
                 </div>
 
-                <?php echo form_error('conf_password') ?>
                 <div class="form-group">
                   <label for="InputConfPassword">Konfirmasi Password<span style="color:red;">*</span></label> <?php echo form_error('conf_password'); ?>
                   <div class="input-group">                 
                     <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-unlock-alt fa-fw"></i></span>
-                    <input class="form-control" id="exampleInputConfPassword1" type="password" name="conf_password" placeholder="Masukkan kembali password">
+                    <input class="form-control" id="exampleInputConfPassword1" type="password" name="conf_password" placeholder="Masukkan kembali password" value="<?php echo isset($conf_password)?$conf_password:null; ?>" >
                   </div> <!-- /.form-group -->
                 </div>
             
@@ -114,7 +113,7 @@
                   <label for="InputNoHp">Nomor Handphone<span style="color:red;">*</span></label> <?php echo form_error('no_hp'); ?>
                 <div class="input-group">                 
                   <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-mobile-phone fa-fw"></i></span>
-                  <input class="form-control" id="exampleInputNoHP" name="no_hp" type="text" 
+                  <input class="form-control" id="exampleInputNoHP" name="no_hp" type="tel" 
                     value="<?php echo isset($no_hp)?$no_hp:null; ?>" 
                     placeholder="Masukkan nomor handphone" >
                 </div>
@@ -148,7 +147,7 @@
 
 
                 <!-- Button -->
-                <button class="btn btn-default btn-block" type="submit" style="background-color: #C7C7C8">Submit</button>
+                <button class="btn btn-success btn-block" type="submit">Submit</button>
 
                 <!-- Checkbox -->
                 <!-- <section class="text-center">
@@ -160,9 +159,7 @@
                 <!-- </section> /.text-center -->
 
                 <!-- Sign In/Sign Up links -->
-                <section class="sign-in-up-links text-center">
-                  <p><a href="./forgot-password.html">Forgot email or password?</a></p>
-                </section> <!-- /.sign-in-up-links -->
+                
                 
               </form> <!-- /.sign-in-up-form
               
@@ -172,22 +169,6 @@
           
         </section> <!-- /.sign-in-up-content -->
 
-
-
-
-        <div class="row">
-
-          <div class="col-md-12">
-
-            <section class="footer-copyright text-center" style="padding: 0px 15px;">
-
-              <button class="btn btn-success btn-block" type="submit">Sign Up</button>
-              
-            </section> <!-- /.footer-section -->
-            
-          </div> <!-- /.col-md-12 -->
-
-        </div> <!-- /.row -->
         
       </div> <!-- /.container -->
 
