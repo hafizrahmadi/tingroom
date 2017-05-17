@@ -152,10 +152,10 @@ $this->load->view('template/js');
     $('#jam_awal').timepicker({
         timeFormat: 'HH:mm',
         interval: 30,
-        minTime: '8:00am',
-        maxTime: '6:00pm',
+        minTime: '7:00am',
+        maxTime: '8:30pm',
         // defaultTime: '08:00am',
-        startTime: '08:00am',
+        startTime: '07:00am',
         dynamic: false,
         dropdown: true,
         scrollbar: true
@@ -163,10 +163,10 @@ $this->load->view('template/js');
     $('#jam_akhir').timepicker({
         timeFormat: 'HH:mm',
         interval: 30,
-        minTime: '8:30am',
-        maxTime: '6:00pm',
+        minTime: '7:30am',
+        maxTime: '9:00pm',
         // defaultTime: '08:30am',
-        startTime: '08:30am',
+        startTime: '07:30am',
         dynamic: false,
         dropdown: true,
         scrollbar: true

@@ -2,11 +2,15 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/jQuery/jQuery-2.1.3.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/AdminLTE-2.0.5/bootstrap/js/bootstrap.min.js') ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datepicker/bootstrap-datepicker.js') ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datepicker/datepicker3.css') ?>" type="text/javascript"></script>
+    <!--<script src="<?php echo base_url('assets/js/jquery-ui.min.js') ?>" type="text/javascript"></script>-->
+    <script src="<?php echo base_url('assets/js/datepicker.js') ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/js/jquery.mobile.datepicker.js') ?>" type="text/javascript"></script>
+    
+    
     <script type="text/javascript">
       $('tr[data-href]').on("click", function() {
-          document.location = $(this).data('href');
+        $("input[name='id_lantai']").val($(this).data('href'));
+        $("#form-lantai").submit();
       });
 
       $(function(){
@@ -26,14 +30,8 @@
         });                
       });
       
-      $('.datepicker').datepicker({
-          format: 'dd-mm-yyyy',
-          startDate: 'now',
-          endDate: '+3d'
-      });
 
     </script>
-
     <script type="text/javascript">
       var curCheckedRoom = "";
 
@@ -79,5 +77,56 @@
 
 
     </script>
+    
+    
+    <script>
+    var maxdate;
+
+    $(document).ready(function(){
+      var d = new Date();
+      var day = d.getDay();
+      // var day = 1;
+      if (day==4||day==5||day==6) {
+        maxdate = '+4d';
+      }else if(day==0){
+        maxdate = '+3d';
+      }else {
+        maxdate = '+2d';
+      }
+          $( "#datepicker" ).datepicker({
+              dateFormat: 'dd-mm-yy',
+              minDate: 'now',
+              maxDate: maxdate,
+              // maxDate: function(date){
+              //     var day = date.getDay();
+              //     if (day==4||day==5||day==6) {
+              //       return '+5d';
+              //     }else if(day==0){
+              //       return '+4d';
+              //     }else {
+              //       return '+3d';
+              //     }
+              // },
+              beforeShowDay: $.datepicker.noWeekends,
+              // beforeShowDay: function(date) {
+              //     var day = date.getDay();
+              //     return [(day != 0 && day != 6), ''];
+              // },
+              // beforeShow: function (input, inst) {
+              //     setTimeout(function () {
+              //         inst.dpDiv.css({
+              //             top: $("#datepicker").offset().top + 35,
+              //             left: $("#datepicker").offset().left
+              //         });
+              //     }, 0);
+              // }
+        });
+    });
+
+  
+
+    </script>
+
+    
   </body>
 </html>

@@ -6754,3 +6754,43 @@ textarea[disabled] {
     font-size: 10px;
   }
 }
+
+.form-control-input {
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #696f6f;
+  background-color: white;
+  background-image: none;
+  border: 2px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.form-control-input:focus {
+  border-color: #00b6ad;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.form-control-input::-moz-placeholder {
+  color: #636f70;
+  opacity: 1;
+}
+.form-control-input:-ms-input-placeholder {
+  color: #636f70;
+}
+.form-control-input::-webkit-input-placeholder {
+  color: #636f70;
+}
+.form-control-input[disabled], .form-control-input[readonly], fieldset[disabled] .form-control-input {
+  cursor: not-allowed;
+  background-color: #f3f4f5;
+  opacity: 1;
+}

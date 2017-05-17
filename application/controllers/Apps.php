@@ -27,7 +27,11 @@ class Apps extends CI_Controller {
 		// echo "<a href='".site_url('auth/logout')."' class='btn btn-default btn-flat'><i class='fa fa-sign-out'></i> Sign out</a>";
 	}
 
-	public function booking($id_lantai){
+	public function booking(){
+		if ($this->input->post('id_lantai')!=null) {
+			$this->session->set_userdata('id_lantai',$this->input->post('id_lantai'));
+		}
+		$id_lantai = $this->session->userdata('id_lantai');
 		$data['lantai'] = $this->M_Lantai->getIDLantai($id_lantai);
 		$data['ruangan'] = $this->M_Ruangan->getRuanganInLantai($id_lantai);
 		$data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai);
@@ -38,8 +42,18 @@ class Apps extends CI_Controller {
 
 	public function book_demand(){
 		// var_dump($this->input->post('jadwal'));
-		$data['ruangan'] = $this->M_Ruangan->getIDRuangan($this->input->post('id_ruangan'));
-		$data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($this->input->post('jadwal'));
+		if ($this->input->post('id_ruangan')!=null) {
+			$this->session->set_userdata('id_ruangan',$this->input->post('id_ruangan'));
+		}
+
+		if ($this->input->post('jadwal')!=null) {
+			$this->session->set_userdata('jadwal',$this->input->post('jadwal'));
+		}
+		
+		$id_ruangan = $this->session->userdata('id_ruangan');
+		$jadwal = $this->session->userdata('jadwal');
+		$data['ruangan'] = $this->M_Ruangan->getIDRuangan($id_ruangan);
+		$data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($jadwal);
 		// var_dump($data['jadwal']);
 		$this->load->view('form_booking',$data);
 	}

@@ -6,7 +6,7 @@
           <table class="table table-grey" >
             <tbody>
             <?php foreach ($lantai as $key) { ?>
-                  <tr data-href="<?php echo site_url('apps/booking/'.$key['id_lantai']) ?>" >
+                  <tr data-href="<?php echo $key['id_lantai'] ?>" >
                     <td><?php echo ucwords($key['nama_gedung']); ?></td>
                     <td class="col-lantai"><?php echo $key['nama_lantai'];  ?></td>
                     <td >▼</td> 
@@ -17,7 +17,9 @@
           <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
           <div id="demo" class="collapse">ciluk ba</div> -->
         </div>
-
+        <form id="form-lantai" method="post" action="<?php echo site_url('apps/booking/'); ?>">
+          <input type="hidden" name="id_lantai" value="">
+        </form>
 
 
       </div>

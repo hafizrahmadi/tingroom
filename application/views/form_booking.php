@@ -33,16 +33,19 @@
               
             </div>
           </div>
-          <div class="col-xs-12">
-          	<div class="form-group">
-          		<input type="text" class="datepicker">		
-          	</div>
+
+           <div class="col-xs-12">                  
+                <div class="input-group" style="margin-bottom:0px;">  
+                <input type="text" id="datepicker" class="form-control-input" placeholder="Pilih Tanggal Booking.">
+
+                 <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-calendar fa-fw" style="margin-left:-5px;"></i></span>
+                </div>
           </div>
           
           <div class="col-xs-12">
             <div class="form-group">
               
-              <textarea class="form-control textarea" rows="5" id="t_description" placeholder="Description . . ."></textarea>
+              <textarea class="form-control textarea" rows="5" id="t_description" placeholder="Masukkan deskripsi booking (perihal booking)"></textarea>
               <button class="btn  btn-block btn-turquoise"  data-href="booking-3.html">Continue</button> 
             </div>
           </div>

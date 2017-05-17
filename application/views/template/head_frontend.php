@@ -21,6 +21,10 @@
     <link href="<?php echo base_url('assets/css/application2.css');?>" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('assets/font-awesome-4.3.0/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
+    <!-- <link href="<?php echo base_url('assets/css/jquery-ui.min.css');?>" rel="stylesheet" type="text/css"> -->
+
+    <link href="<?php echo base_url('assets/css/jquery.mobile.datepicker.css') ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/css/jquery.mobile.datepicker.theme.css') ?>" rel="stylesheet" type="text/css" />
 
     <!-- Favicons -->
     <link href="<?php echo base_url('assets/img/logo-small-tingroom.png') ?>" rel="shortcut icon">
