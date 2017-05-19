@@ -10,19 +10,22 @@ class Apps extends CI_Controller {
 		$this->load->model('M_Lantai','',true);
 		$this->load->model('M_Ruangan','',true);
 		$this->load->model('M_Jadwal','',true);
+		$this->load->model('M_Booking','',true);
 		$this->redirect->backToCurrentAdmin();
 		$this->redirect->backToLogin();
 		$this->session->set_userdata('referred_from', current_url());
+		$this->data['session'] = $this->session->userdata('logged_in');
+		$this->data['apps'] = 'active';
 	}	
 
 	public function index()
 	{		
 		$this->redirect->backToLogin();
-		$data['session'] = $this->session->userdata('logged_in');
+		
 		
 		// $this->load->view('view_dashboard1',$data);
-		$data['lantai'] = $this->M_Lantai->getLantai();
-		$this->load->view('view_booking1',$data);
+		$this->data['lantai'] = $this->M_Lantai->getLantai();
+		$this->load->view('view_booking1',$this->data);
 		
 		// echo "<a href='".site_url('auth/logout')."' class='btn btn-default btn-flat'><i class='fa fa-sign-out'></i> Sign out</a>";
 	}
@@ -32,11 +35,11 @@ class Apps extends CI_Controller {
 			$this->session->set_userdata('id_lantai',$this->input->post('id_lantai'));
 		}
 		$id_lantai = $this->session->userdata('id_lantai');
-		$data['lantai'] = $this->M_Lantai->getIDLantai($id_lantai);
-		$data['ruangan'] = $this->M_Ruangan->getRuanganInLantai($id_lantai);
-		$data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai);
-		// var_dump($data['ruangan']);
-		$this->load->view('view_booking2',$data);
+		$this->data['lantai'] = $this->M_Lantai->getIDLantai($id_lantai);
+		$this->data['ruangan'] = $this->M_Ruangan->getRuanganInLantai($id_lantai);
+		$this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai);
+		// var_dump($this->data['ruangan']);
+		$this->load->view('view_booking2',$this->data);
 		
 	}
 
@@ -52,10 +55,28 @@ class Apps extends CI_Controller {
 		
 		$id_ruangan = $this->session->userdata('id_ruangan');
 		$jadwal = $this->session->userdata('jadwal');
-		$data['ruangan'] = $this->M_Ruangan->getIDRuangan($id_ruangan);
-		$data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($jadwal);
-		// var_dump($data['jadwal']);
-		$this->load->view('form_booking',$data);
+		$this->data['ruangan'] = $this->M_Ruangan->getIDRuangan($id_ruangan);
+		$this->data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($jadwal);
+		// var_dump($this->data['jadwal']);
+		$this->load->view('form_booking',$this->data);
+	}
+
+	public function proses_book(){
+		// var_dump($this->input->post());
+		// var_dump($this->session->userdata('logged_in'));
+		
+		// echo $mysqltime;
+		$this->data['id_user'] = $this->session->userdata('logged_in')['id_user'];
+		$phptime = strtotime($this->input->post('waktu'));
+		$this->data['waktu'] = date('Y-m-d', $phptime);
+		$this->data['jadwal'] = $this->input->post('jadwal');
+		$this->data['deskripsi'] = $this->input->post('deskripsi');
+		// var_dump($this->data);
+		$this->M_Booking->setBooking($this->data);
+		echo "<script>
+					alert('Data booking telah ditambahkan. Tunggu konfirmasi dari sekretaris.');
+					document.location='".site_url('history/')."';
+				</script>";
 	}
 }
 

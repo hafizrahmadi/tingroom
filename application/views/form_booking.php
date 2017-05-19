@@ -11,7 +11,7 @@
             <div class="col-xs-3 t-white i-projector"><?php echo $ruangan[0]['proyektor']==0?"None":"Available" ?></div>
             <div class="col-xs-3 t-white i-chair"><?php echo $ruangan[0]['kapasitas'] ?> person</div>
           </div>
-          <form method="post" action="<?php site_url('apps/proses_book') ?>">
+          <form method="post" action="<?php echo site_url('apps/proses_book') ?>">
           <div class="col-xs-12 no-pointer" >
             <div class="funkyradio">
             <?php foreach ($jadwal as $key => $value) { ?>
@@ -36,7 +36,7 @@
 
            <div class="col-xs-12">                  
                 <div class="input-group" style="margin-bottom:0px;">  
-                <input type="text" id="datepicker" class="form-control-input" placeholder="Pilih Tanggal Booking.">
+                <input type="text" id="datepicker" class="form-control-input" placeholder="Pilih Tanggal Booking." name="waktu">
 
                  <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-calendar fa-fw" style="margin-left:-5px;"></i></span>
                 </div>
@@ -45,7 +45,7 @@
           <div class="col-xs-12">
             <div class="form-group">
               
-              <textarea class="form-control textarea" rows="5" id="t_description" placeholder="Masukkan deskripsi booking (perihal booking)"></textarea>
+              <textarea class="form-control textarea" rows="5" id="t_description" name="deskripsi" placeholder="Masukkan deskripsi booking (perihal booking)"></textarea>
               <button class="btn  btn-block btn-turquoise"  data-href="booking-3.html">Continue</button> 
             </div>
           </div>

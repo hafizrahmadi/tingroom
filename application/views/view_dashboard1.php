@@ -34,12 +34,12 @@ $this->load->view('template/sidebar');
 </section>
 
 <!-- Main content -->
-<section class="content">
+<!-- <section class="content" style="display:none;"> -->
     <!-- Small boxes (Stat box) -->
-    <div class="row">
-        <div class="col-lg-3 col-xs-6">
+    <!-- <div class="row">
+        <div class="col-lg-3 col-xs-6"> -->
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <!-- <div class="small-box bg-aqua">
                 <div class="inner">
                     <h3>150</h3>
                     <p>New Orders</p>
@@ -49,10 +49,10 @@ $this->load->view('template/sidebar');
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div><!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        </div> --><!-- ./col -->
+        <!-- <div class="col-lg-3 col-xs-6"> -->
             <!-- small box -->
-            <div class="small-box bg-green">
+            <!-- <div class="small-box bg-green">
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px">%</sup></h3>
                     <p>Bounce Rate</p>
@@ -62,10 +62,10 @@ $this->load->view('template/sidebar');
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div><!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        </div> --><!-- ./col -->
+        <!-- <div class="col-lg-3 col-xs-6"> -->
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <!-- <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>44</h3>
                     <p>User Registrations</p>
@@ -75,10 +75,10 @@ $this->load->view('template/sidebar');
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div><!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        </div> --><!-- ./col -->
+        <!-- <div class="col-lg-3 col-xs-6"> -->
             <!-- small box -->
-            <div class="small-box bg-red">
+            <!-- <div class="small-box bg-red">
                 <div class="inner">
                     <h3>65</h3>
                     <p>Unique Visitors</p>
@@ -88,29 +88,29 @@ $this->load->view('template/sidebar');
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div><!-- ./col -->
-    </div><!-- /.row -->
+        </div> --><!-- ./col -->
+    <!-- </div> --><!-- /.row -->
     <!-- Main row -->
-    <div class="row">
+    <!-- <div class="row"> -->
         <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
+        <!-- <section class="col-lg-7 connectedSortable"> -->
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="nav-tabs-custom">
+            <!-- <div class="nav-tabs-custom"> -->
                 <!-- Tabs within a box -->
-                <ul class="nav nav-tabs pull-right">
+                <!-- <ul class="nav nav-tabs pull-right">
                     <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
                     <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
                     <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
                 </ul>
-                <div class="tab-content no-padding">
+                <div class="tab-content no-padding"> -->
                     <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                    <!-- <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
                     <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
                 </div>
-            </div><!-- /.nav-tabs-custom -->
+            </div> --><!-- /.nav-tabs-custom -->
 
             <!-- Chat box -->
-            <div class="box box-success">
+            <!-- <div class="box box-success">
                 <div class="box-header">
                     <i class="fa fa-comments-o"></i>
                     <h3 class="box-title">Chat</h3>
@@ -121,9 +121,9 @@ $this->load->view('template/sidebar');
                         </div>
                     </div>
                 </div>
-                <div class="box-body chat" id="chat-box">
+                <div class="box-body chat" id="chat-box"> -->
                     <!-- chat item -->
-                    <div class="item">
+                    <!-- <div class="item">
                         <img src="<?php echo base_url('assets/AdminLTE-2.0.5/dist/img/user4-128x128.jpg') ?>" alt="user image" class="online"/>
                         <p class="message">
                             <a href="#" class="name">
@@ -142,10 +142,10 @@ $this->load->view('template/sidebar');
                             <div class="pull-right">
                                 <button class="btn btn-primary btn-sm btn-flat">Open</button>
                             </div>
-                        </div><!-- /.attachment -->
-                    </div><!-- /.item -->
+                        </div> --><!-- /.attachment -->
+                    <!-- </div> --><!-- /.item -->
                     <!-- chat item -->
-                    <div class="item">
+                    <!-- <div class="item">
                         <img src="<?php echo base_url('assets/AdminLTE-2.0.5/dist/img/user3-128x128.jpg') ?>" alt="user image" class="offline"/>
                         <p class="message">
                             <a href="#" class="name">
@@ -156,9 +156,9 @@ $this->load->view('template/sidebar');
                             the arrival of the new theme. They say it is going to be one the
                             best themes on the market
                         </p>
-                    </div><!-- /.item -->
+                    </div> --><!-- /.item -->
                     <!-- chat item -->
-                    <div class="item">
+                    <!-- <div class="item">
                         <img src="<?php echo base_url('assets/AdminLTE-2.0.5/dist/img/user2-160x160.jpg" alt="user image') ?>" class="offline"/>
                         <p class="message">
                             <a href="#" class="name">
@@ -169,9 +169,9 @@ $this->load->view('template/sidebar');
                             the arrival of the new theme. They say it is going to be one the
                             best themes on the market
                         </p>
-                    </div><!-- /.item -->
-                </div><!-- /.chat -->
-                <div class="box-footer">
+                    </div> --><!-- /.item -->
+                <!-- </div> --><!-- /.chat -->
+                <!-- <div class="box-footer">
                     <div class="input-group">
                         <input class="form-control" placeholder="Type message..."/>
                         <div class="input-group-btn">
@@ -179,10 +179,10 @@ $this->load->view('template/sidebar');
                         </div>
                     </div>
                 </div>
-            </div><!-- /.box (chat box) -->
+            </div> --><!-- /.box (chat box) -->
 
             <!-- TO DO List -->
-            <div class="box box-primary">
+            <!-- <div class="box box-primary">
                 <div class="box-header">
                     <i class="ion ion-clipboard"></i>
                     <h3 class="box-title">To Do List</h3>
@@ -195,23 +195,23 @@ $this->load->view('template/sidebar');
                             <li><a href="#">&raquo;</a></li>
                         </ul>
                     </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
+                </div> --><!-- /.box-header -->
+                <!-- <div class="box-body">
                     <ul class="todo-list">
-                        <li>
+                        <li> -->
                             <!-- drag handle -->
-                            <span class="handle">
+                            <!-- <span class="handle">
                                 <i class="fa fa-ellipsis-v"></i>
                                 <i class="fa fa-ellipsis-v"></i>
-                            </span>
+                            </span> -->
                             <!-- checkbox -->
-                            <input type="checkbox" value="" name=""/>
+                            <!-- <input type="checkbox" value="" name=""/> -->
                             <!-- todo text -->
-                            <span class="text">Design a nice theme</span>
+                            <!-- <span class="text">Design a nice theme</span> -->
                             <!-- Emphasis label -->
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                            <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
                             <!-- General tools such as edit or delete-->
-                            <div class="tools">
+                            <!-- <div class="tools">
                                 <i class="fa fa-edit"></i>
                                 <i class="fa fa-trash-o"></i>
                             </div>
@@ -282,22 +282,22 @@ $this->load->view('template/sidebar');
                             </div>
                         </li>
                     </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer clearfix no-border">
+                </div> --><!-- /.box-body -->
+                <!-- <div class="box-footer clearfix no-border">
                     <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
                 </div>
-            </div><!-- /.box -->
+            </div> --><!-- /.box -->
 
             <!-- quick email widget -->
-            <div class="box box-info">
+            <!-- <div class="box box-info">
                 <div class="box-header">
                     <i class="fa fa-envelope"></i>
-                    <h3 class="box-title">Quick Email</h3>
+                    <h3 class="box-title">Quick Email</h3> -->
                     <!-- tools box -->
-                    <div class="pull-right box-tools">
+                    <!-- <div class="pull-right box-tools">
                         <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div><!-- /. tools -->
-                </div>
+                    </div> --><!-- /. tools -->
+                <!-- </div>
                 <div class="box-body">
                     <form action="#" method="post">
                         <div class="form-group">
@@ -314,50 +314,50 @@ $this->load->view('template/sidebar');
                 <div class="box-footer clearfix">
                     <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
-            </div>
+            </div> -->
 
-        </section><!-- /.Left col -->
+        <!-- </section> --><!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
+        <!-- <section class="col-lg-5 connectedSortable"> -->
 
             <!-- Map box -->
-            <div class="box box-solid bg-light-blue-gradient">
-                <div class="box-header">
+            <!-- <div class="box box-solid bg-light-blue-gradient">
+                <div class="box-header"> -->
                     <!-- tools box -->
-                    <div class="pull-right box-tools">
+                    <!-- <div class="pull-right box-tools">
                         <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
                         <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
-                    </div><!-- /. tools -->
+                    </div> --><!-- /. tools -->
 
-                    <i class="fa fa-map-marker"></i>
+                    <!-- <i class="fa fa-map-marker"></i>
                     <h3 class="box-title">
                         Visitors
                     </h3>
                 </div>
                 <div class="box-body">
                     <div id="world-map" style="height: 250px; width: 100%;"></div>
-                </div><!-- /.box-body-->
-                <div class="box-footer no-border">
+                </div> --><!-- /.box-body-->
+                <!-- <div class="box-footer no-border">
                     <div class="row">
                         <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                             <div id="sparkline-1"></div>
                             <div class="knob-label">Visitors</div>
-                        </div><!-- ./col -->
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        </div> --><!-- ./col -->
+                        <!-- <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                             <div id="sparkline-2"></div>
                             <div class="knob-label">Online</div>
-                        </div><!-- ./col -->
-                        <div class="col-xs-4 text-center">
+                        </div> --><!-- ./col -->
+                        <!-- <div class="col-xs-4 text-center">
                             <div id="sparkline-3"></div>
                             <div class="knob-label">Exists</div>
-                        </div><!-- ./col -->
-                    </div><!-- /.row -->
-                </div>
-            </div>
+                        </div> --><!-- ./col -->
+                    <!-- </div> --><!-- /.row -->
+                <!-- </div>
+            </div> -->
             <!-- /.box -->
 
             <!-- solid sales graph -->
-            <div class="box box-solid bg-teal-gradient">
+            <!-- <div class="box box-solid bg-teal-gradient">
                 <div class="box-header">
                     <i class="fa fa-th"></i>
                     <h3 class="box-title">Sales Graph</h3>
@@ -368,34 +368,34 @@ $this->load->view('template/sidebar');
                 </div>
                 <div class="box-body border-radius-none">
                     <div class="chart" id="line-chart" style="height: 250px;"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer no-border">
+                </div> --><!-- /.box-body -->
+                <!-- <div class="box-footer no-border">
                     <div class="row">
                         <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                             <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
                             <div class="knob-label">Mail-Orders</div>
-                        </div><!-- ./col -->
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        </div> --><!-- ./col -->
+                        <!-- <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
                             <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
                             <div class="knob-label">Online</div>
-                        </div><!-- ./col -->
-                        <div class="col-xs-4 text-center">
+                        </div> --><!-- ./col -->
+                        <!-- <div class="col-xs-4 text-center">
                             <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
                             <div class="knob-label">In-Store</div>
-                        </div><!-- ./col -->
-                    </div><!-- /.row -->
-                </div><!-- /.box-footer -->
-            </div><!-- /.box -->
+                        </div> --><!-- ./col -->
+                    <!-- </div> --><!-- /.row -->
+                <!-- </div> --><!-- /.box-footer -->
+            <!-- </div> --><!-- /.box -->
 
             <!-- Calendar -->
-            <div class="box box-solid bg-green-gradient">
+            <!-- <div class="box box-solid bg-green-gradient">
                 <div class="box-header">
                     <i class="fa fa-calendar"></i>
-                    <h3 class="box-title">Calendar</h3>
+                    <h3 class="box-title">Calendar</h3> -->
                     <!-- tools box -->
-                    <div class="pull-right box-tools">
+                    <!-- <div class="pull-right box-tools"> -->
                         <!-- button with a dropdown -->
-                        <div class="btn-group">
+                        <!-- <div class="btn-group">
                             <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li><a href="#">Add new event</a></li>
@@ -406,17 +406,17 @@ $this->load->view('template/sidebar');
                         </div>
                         <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div><!-- /. tools -->
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
+                    </div> --><!-- /. tools -->
+                <!-- </div> --><!-- /.box-header -->
+                <!-- <div class="box-body no-padding"> -->
                     <!--The calendar -->
-                    <div id="calendar" style="width: 100%"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-black">
+                    <!-- <div id="calendar" style="width: 100%"></div>
+                </div> --><!-- /.box-body -->
+                <!-- <div class="box-footer text-black">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"> -->
                             <!-- Progress bars -->
-                            <div class="clearfix">
+                            <!-- <div class="clearfix">
                                 <span class="pull-left">Task #1</span>
                                 <small class="pull-right">90%</small>
                             </div>
@@ -431,8 +431,8 @@ $this->load->view('template/sidebar');
                             <div class="progress xs">
                                 <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
                             </div>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
+                        </div> --><!-- /.col -->
+                        <!-- <div class="col-sm-6">
                             <div class="clearfix">
                                 <span class="pull-left">Task #3</span>
                                 <small class="pull-right">60%</small>
@@ -448,15 +448,15 @@ $this->load->view('template/sidebar');
                             <div class="progress xs">
                                 <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
                             </div>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div>
-            </div><!-- /.box -->
+                        </div> --><!-- /.col -->
+                    <!-- </div> --><!-- /.row -->
+                <!-- </div>
+            </div> --><!-- /.box -->
 
-        </section><!-- right col -->
-    </div><!-- /.row (main row) -->
+        <!-- </section> --><!-- right col -->
+    <!-- </div> --><!-- /.row (main row) -->
 
-</section><!-- /.content -->
+<!-- </section> --><!-- /.content -->
 
 
 <?php

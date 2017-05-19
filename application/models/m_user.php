@@ -70,5 +70,26 @@ class M_User extends CI_Model
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
+
+	function getUser(){
+		$query = "SELECT u.id_user,u.email,u.nama,u.no_hp,l.nama_lantai,g.nama_gedung, un.nama_unit,
+					case u.level
+				    	when 1 then 'Admin'
+				        when 2 then 'Sekretaris'
+				        when 3 then 'User'
+				    end as level,	
+				    case u.status
+				    	when 0 then 'Not Active'
+				        when 1 then 'Active'
+				        when 2 then 'Banned'
+				    end as status
+
+					FROM `tb_user` u left outer join tb_unit un on u.id_unit = un.id_unit
+				    		left outer join tb_lantai l on u.id_lantai = l.id_lantai
+				            left outer join tb_gedung g on l.id_gedung = g.id_gedung
+				    order by u.level, u.id_user asc";
+    	$result = $this->db->query($query);
+		return $result->result_array();
+	}
 }
  ?>

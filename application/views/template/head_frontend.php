@@ -27,7 +27,19 @@
     <link href="<?php echo base_url('assets/css/jquery.mobile.datepicker.theme.css') ?>" rel="stylesheet" type="text/css" />
 
     <!-- Favicons -->
-    <link href="<?php echo base_url('assets/img/logo-small-tingroom.png') ?>" rel="shortcut icon">
+    <link rel="icon"  href="<?php echo base_url('assets/img/logo-small-icon.png') ?>" >
+
+    <style>
+    .accepted{
+      background-color:#f1c40f;
+    }
+    .rejected{
+      background-color:#BA0000;
+    }
+    .completed{
+      background-color:#292B2C;
+    }
+    </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -62,12 +74,12 @@
 
         <div class="col-xs-12 container-button">
           <div class="col-xs-4 button-menu">
-            <a href="http://www.google.com" ><i class="fa fa-bookmark fa-fw fa-active"></i>Booking</a>
+            <a href="<?php echo site_url('apps/') ?>" ><i class="fa fa-bookmark fa-fw <?php echo isset($apps)?'fa-active':null; ?>"></i>Booking</a>
           </div>
           <div class="col-xs-4 button-menu">
-            <a href="http://www.google.com" ><i class="fa fa-clock-o fa-fw "></i>History</a>
+            <a href="<?php echo site_url('history/') ?>" ><i class="fa fa-clock-o fa-fw <?php echo isset($history)?'fa-active':null; ?>"></i>History</a>
           </div>
           <div class="col-xs-4 button-menu">
-            <a href="http://www.google.com" ><i class="fa fa-gear fa-fw "></i>Setting</a>
+            <a href="<?php echo site_url('setting/') ?>" ><i class="fa fa-gear fa-fw <?php echo isset($setting)?'fa-active':null; ?>"></i>Setting</a>
           </div>
         </div>
