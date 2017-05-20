@@ -150,6 +150,7 @@ class Auth extends CI_Controller {
 			$direct='Auth/login';
 		}
 		$this->session->unset_userdata('logged_in');
+		// die();
 		echo "<script>
 		alert('Anda telah ter-logout');
 		document.location='".site_url($direct)."';

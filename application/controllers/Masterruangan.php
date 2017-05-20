@@ -59,10 +59,10 @@ class Masterruangan extends CI_Controller {
 			,array('required'=>'Lantai harus dipilih.'));
 		$this->form_validation->set_rules('proyektor', 'Ketersedian Proyektor', 'required'
 			,array('required'=>'{field} harus dipilih.'));
-		$this->form_validation->set_rules('board', 'Jumlah Board', 'trim|required|decimal'
-			,array('trim'=>'','required'=>'Kolom {field} harus diisi.','decimal'=> 'Kolom {field} harus berisi angka.'));
-		$this->form_validation->set_rules('kapasitas', 'Jumlah Kapasitas', 'trim|required|decimal'
-			,array('trim'=>'','required'=>'Kolom {field} harus diisi.','decimal'=> 'Kolom {field} harus berisi angka.'));
+		$this->form_validation->set_rules('board', 'Jumlah Board', 'trim|required|is_natural'
+			,array('trim'=>'','required'=>'Kolom {field} harus diisi.','is_natural'=> 'Kolom {field} harus berisi angka.'));
+		$this->form_validation->set_rules('kapasitas', 'Jumlah Kapasitas', 'trim|required|is_natural'
+			,array('trim'=>'','required'=>'Kolom {field} harus diisi.','is_natural'=> 'Kolom {field} harus berisi angka.'));
 
 		$this->data['nama_ruangan'] = $this->input->post('nama_ruangan',true);
 		$this->data['id_gedung'] = $this->input->post('id_gedung',true);
