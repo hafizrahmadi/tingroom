@@ -38,11 +38,20 @@ class Demandbooking extends CI_Controller {
 	public function approve($id_booking)
 	{
 			$this->M_booking->approve($id_booking);
+			// die(var_dump($this->M_booking->approve($id_booking)));
+			echo "<script>
+					alert('Data booking telah di-approve.');
+					document.location='".site_url('demandbooking/')."';
+				</script>";
 	}
 
 	public function reject($id_booking)
 	{
 			$this->M_booking->reject($id_booking);
+			echo "<script>
+					alert('Data booking telah di-reject.');
+					document.location='".site_url('demandbooking/')."';
+				</script>";
 	}
 
 	// public function getRuangan(){

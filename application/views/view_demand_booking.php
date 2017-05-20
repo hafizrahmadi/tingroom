@@ -27,8 +27,7 @@ $this->load->view('template/sidebar');
         <div class="box-header with-border">
             <h3 class="box-title">Permintaan Booking</h3>
             <div class="box-tools pull-right">
-                <!-- <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button> -->
-                <a href="<?php echo site_url('demandbooking/tambah') ?>"><button class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" style=""></i> Tambah Data</button></a>
+                
             </div>
         </div>
         <div class="box-body">
@@ -77,7 +76,7 @@ $this->load->view('template/sidebar');
                              <button class="btn btn-xs btn-success"><i class="fa fa-check" style=""></i> Approve</button>
                              </a>
                               <a href="<?php echo site_url('demandbooking/reject/'.$value['id_booking']) ?>"  onclick="return rej_conf();">
-                             <button class="btn btn-xs btn-success"><i class="fa fa-close" style=""></i> Reject</button>
+                             <button class="btn btn-xs btn-danger"><i class="fa fa-close" style=""></i> Reject</button>
                              </a> 
                              </a>
                             </div>

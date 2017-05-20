@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2017 at 10:07 AM
+-- Generation Time: May 20, 2017 at 01:27 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -37,16 +37,17 @@ CREATE TABLE IF NOT EXISTS `tb_booking` (
   `status` int(11) NOT NULL,
   `read` int(11) NOT NULL,
   `time_created` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_booking`
 --
 
 INSERT INTO `tb_booking` (`id_booking`, `id_user`, `waktu`, `deskripsi`, `status`, `read`, `time_created`) VALUES
-(1, 2, '2017-05-19', 'Untuk meeting bulanan', 0, 0, '2017-05-19 14:42:48'),
-(3, 2, '2017-05-22', 'Untuk lomba dota', 0, 0, '2017-05-19 15:41:04'),
-(4, 2, '2017-05-23', 'Resepsi semhas aan', 0, 0, '2017-05-19 20:34:55');
+(1, 2, '2017-05-22', 'Untuk meeting bulanan', 2, 0, '2017-05-19 14:42:48'),
+(3, 2, '2017-05-22', 'Untuk lomba dota', 1, 0, '2017-05-19 15:41:04'),
+(4, 2, '2017-05-23', 'Resepsi semhas aan', 0, 0, '2017-05-19 20:34:55'),
+(5, 2, '2017-05-24', 'Meeting sales bulanan', 0, 0, '2017-05-20 18:00:58');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `tb_det_booking` (
   `id_det_booking` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_det_booking`
@@ -69,7 +70,8 @@ INSERT INTO `tb_det_booking` (`id_det_booking`, `id_jadwal`, `id_booking`) VALUE
 (1, 1, 1),
 (2, 3, 1),
 (3, 5, 3),
-(4, 4, 4);
+(4, 4, 4),
+(5, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,7 @@ INSERT INTO `tb_jadwal` (`id_jadwal`, `id_ruangan`, `jam_awal`, `jam_akhir`, `st
 (2, 5, '10:00', '10:30', 0, 1),
 (3, 4, '08:30', '09:00', 0, 0),
 (4, 4, '09:00', '09:30', 0, 0),
-(5, 6, '08:00', '08:30', 0, 0),
+(5, 6, '08:00', '08:30', 2, 0),
 (6, 10, '10:00', '10:30', 0, 0),
 (7, 7, '08:00', '08:30', 0, 0);
 
@@ -315,12 +317,12 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_det_booking`
 --
 ALTER TABLE `tb_det_booking`
-  MODIFY `id_det_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_det_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_gedung`
 --
@@ -393,6 +395,18 @@ ALTER TABLE `tb_ruangan`
 ALTER TABLE `tb_user`
   ADD CONSTRAINT `tb_user_ibfk_1` FOREIGN KEY (`id_unit`) REFERENCES `tb_unit` (`id_unit`),
   ADD CONSTRAINT `tb_user_ibfk_2` FOREIGN KEY (`id_lantai`) REFERENCES `tb_lantai` (`id_lantai`);
+
+DELIMITER $$
+--
+-- Events
+--
+DROP EVENT `event_update_booking_3`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_booking_3` ON SCHEDULE AT '2017-05-22 08:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_booking set status = 3 where id_booking=3$$
+
+DROP EVENT `event_update_det_booking_3`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_det_booking_3` ON SCHEDULE AT '2017-05-22 08:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_jadwal set status=0 where id_jadwal in (select d.id_jadwal from tb_det_booking d where d.id_booking = 3)$$
+
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
