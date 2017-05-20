@@ -84,7 +84,7 @@
                 </a>
             </li> 
              <li>
-                <a href="#">
+                <a href="<?php echo site_url('demandbooking/') ?>">
                     <i class="fa fa-pencil-square-o"></i> <span>Permintaan Booking</span>
                 </a>
             </li> 

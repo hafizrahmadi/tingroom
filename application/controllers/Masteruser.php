@@ -24,7 +24,7 @@ class Masteruser extends CI_Controller {
 	{
 		
 		$this->data['user']=$this->M_user->getUser();				
-		die(var_dump($this->data['user']));
+		// die(var_dump($this->data['user']));
 		$this->load->view('view_master_user',$this->data);
 
 		// var_dump($data);		

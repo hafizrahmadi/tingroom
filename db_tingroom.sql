@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2017 at 10:32 AM
+-- Generation Time: May 20, 2017 at 10:07 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_tingroom`
 --
-DROP DATABASE `db_tingroom`;
 CREATE DATABASE IF NOT EXISTS `db_tingroom` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `db_tingroom`;
 
@@ -33,13 +32,21 @@ DROP TABLE IF EXISTS `tb_booking`;
 CREATE TABLE IF NOT EXISTS `tb_booking` (
   `id_booking` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_jadwal` int(11) NOT NULL,
   `waktu` date NOT NULL,
-  `jenis` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
+  `deskripsi` text,
   `status` int(11) NOT NULL,
+  `read` int(11) NOT NULL,
   `time_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_booking`
+--
+
+INSERT INTO `tb_booking` (`id_booking`, `id_user`, `waktu`, `deskripsi`, `status`, `read`, `time_created`) VALUES
+(1, 2, '2017-05-19', 'Untuk meeting bulanan', 0, 0, '2017-05-19 14:42:48'),
+(3, 2, '2017-05-22', 'Untuk lomba dota', 0, 0, '2017-05-19 15:41:04'),
+(4, 2, '2017-05-23', 'Resepsi semhas aan', 0, 0, '2017-05-19 20:34:55');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,17 @@ CREATE TABLE IF NOT EXISTS `tb_det_booking` (
   `id_det_booking` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_det_booking`
+--
+
+INSERT INTO `tb_det_booking` (`id_det_booking`, `id_jadwal`, `id_booking`) VALUES
+(1, 1, 1),
+(2, 3, 1),
+(3, 5, 3),
+(4, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -237,13 +254,13 @@ INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `no_hp`, `id_lant
 --
 ALTER TABLE `tb_booking`
   ADD PRIMARY KEY (`id_booking`),
-  ADD KEY `fk_id_jadwal` (`id_jadwal`),
   ADD KEY `fk_id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_det_booking`
 --
 ALTER TABLE `tb_det_booking`
+  ADD PRIMARY KEY (`id_det_booking`),
   ADD KEY `fk_id_booking` (`id_booking`),
   ADD KEY `fk_id_jadwal` (`id_jadwal`);
 
@@ -298,7 +315,12 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tb_det_booking`
+--
+ALTER TABLE `tb_det_booking`
+  MODIFY `id_det_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_gedung`
 --
@@ -337,7 +359,8 @@ ALTER TABLE `tb_user`
 -- Constraints for table `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`),
+  ADD CONSTRAINT `tb_booking_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
 
 --
 -- Constraints for table `tb_det_booking`

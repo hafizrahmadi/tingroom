@@ -24,6 +24,23 @@
 <script src="<?php echo base_url('assets/AdminLTE-2.0.5/dist/js/app.min.js') ?>" type="text/javascript"></script>
 
 <script>
+    $(function(){
+        $('.col-lantai').each(function(ix){
+          var i = $(this).html();
+          var j = i % 10,
+          k = i % 100;
+          if (j == 1 && k != 11) {
+              $(this).text(i + "st Floor");
+          }else if (j == 2 && k != 12) {
+              $(this).text(i + "nd Floor");
+          }else if (j == 3 && k != 13) {
+              $(this).text(i + "rd Floor");
+          }else{
+              $(this).text(i + "th Floor");
+          }
+        });                
+      });
+
     function startTime() {
     	var hari = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
     	var bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -62,4 +79,24 @@
                 return false;
             }
         }
+        function acc_conf(){
+            if(confirm("Anda yakin untuk melakukan approve permintaan booking ini ?")){
+                return true;
+
+            }else{
+                window.close();
+                return false;
+            }
+        }
+
+        function rej_conf(){
+            if(confirm("Anda yakin untuk melakukan reject permintaan booking ini ?")){
+                return true;
+
+            }else{
+                window.close();
+                return false;
+            }
+        }
+
 </script>
