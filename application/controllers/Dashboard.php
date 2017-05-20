@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->library('Redirect');
 		$this->load->model('M_gedung','',true);
+		$this->load->model('M_booking','',true);
 		$this->redirect->backToCurrentUser();		
 		$this->redirect->backToLogin();
 
@@ -17,6 +18,7 @@ class Dashboard extends CI_Controller {
 		$this->data = array(
 			'session' => $sesi			
 			);
+		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook();
 	}	
 
 	public function index()

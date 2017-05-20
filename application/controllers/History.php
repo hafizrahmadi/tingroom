@@ -16,6 +16,7 @@ class History extends CI_Controller {
 		$this->session->set_userdata('referred_from', current_url());
 		$this->data['session'] = $this->session->userdata('logged_in');
 		$this->data['history'] = 'active';
+		$this->data['notifUnread'] = $this->M_booking->getUnreadBookUser($this->data['session']['id_user']);
 	}	
 
 	public function index()
@@ -24,7 +25,8 @@ class History extends CI_Controller {
 		$this->data['inprogress'] = 'active';
 		$this->data['booking'] = $this->M_booking->getBookDemand($id_user);
 		$this->data['det_booking'] = $this->M_booking->getDetBookDemand($id_user);
-		
+
+		$this->M_booking->updateUnreadBookPro($id_user);
 		$this->load->view('view_history1',$this->data);		
 		
 	}
@@ -35,7 +37,8 @@ class History extends CI_Controller {
 		$this->data['completed'] = 'active';
 		$this->data['booking'] = $this->M_booking->getBookCompleted($id_user);
 		$this->data['det_booking'] = $this->M_booking->getDetBookCompleted($id_user);
-		// die(var_dump($this->data['booking']));
+		
+		$this->M_booking->updateUnreadBookCom($id_user);
 		$this->load->view('view_history2',$this->data);		
 	}
 	

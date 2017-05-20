@@ -47,15 +47,22 @@ class M_User extends CI_Model
 
 	function setUser($data){
 		if ($data['id_user']=='') {
-			$query = "INSERT INTO tb_user(email,password,level,DELETED) VALUES(
-			'".$data['email']."',
-			'".$data['password']."',
-			'".$data['level']."',
-			'N')";
+			$query = "INSERT INTO tb_user(email,password,nama,no_hp,id_lantai,id_unit,level,status) VALUES 
+		('".$data['email']."','".
+			password_hash($data['password'],PASSWORD_DEFAULT)."','".
+			$data['nama']."','".
+			$data['no_hp']."',".
+			$data['id_lantai'].",".
+			$data['id_unit'].",".
+			$data['level'].",1)";
 		}else{
 			$query = "UPDATE tb_user SET ".
+			"nama = '".$data['nama']."',".
 			"email = '".$data['email']."',".
-			"password = '".$data['password']."',".
+			"password = '".password_hash($data['password'],PASSWORD_DEFAULT)."',".
+			"no_hp = '".$data['no_hp']."',".
+			"id_lantai = '".$data['id_lantai']."',".
+			"id_unit = '".$data['id_unit']."'".
 			" WHERE id_user = ".$data['id_user'];
 		}
 		if ($this->db->query($query)) {

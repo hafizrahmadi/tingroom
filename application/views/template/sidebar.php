@@ -85,7 +85,14 @@
             </li> 
              <li>
                 <a href="<?php echo site_url('demandbooking/') ?>">
-                    <i class="fa fa-pencil-square-o"></i> <span>Permintaan Booking</span>
+                    <i class="fa fa-pencil-square-o"></i> <span>Permintaan Booking 
+                    <?php 
+                        echo isset($notifUnread[0]['notif'])&&$notifUnread[0]['notif']>0?
+                            "<span class='pull-right-container'><span class='label pull-right bg-red'>".$notifUnread[0]['notif']."</span></span>":
+                            null; 
+                    ?>
+                        
+                    </span>
                 </a>
             </li> 
              <li>

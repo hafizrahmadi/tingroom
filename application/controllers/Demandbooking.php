@@ -21,6 +21,7 @@ class Demandbooking extends CI_Controller {
 				'session' => $sesi,
 				'demandbooking' => 'active'
 			);
+		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook();
 	}
 
 	public function index()

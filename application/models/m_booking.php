@@ -31,27 +31,27 @@ class M_booking extends CI_Model {
 	}
 
 	public function getUnreadBookUser($id_user){
-			$query = "select count(*) from tb_booking where status!=0 and read=1 and id_user=$id_user";
+			$query = "select count(*) as notif from `tb_booking` where `status`!=0 and `read`=0 and `id_user`=$id_user";
 			$result = $this->db->query($query);
 			return $result->result_array();
 	}
 
-	public function updateUnreadBookUser($id_user){
-		$query = "update tb_booking set read=2 where id_user=$id_user)";
+	public function updateUnreadBookPro($id_user){
+		$query = "update `tb_booking` set `read`=1 where `status`=1 and `id_user`=$id_user";
+		$this->db->query($query);
+		return true;
+	}
+
+	public function updateUnreadBookCom($id_user){
+		$query = "update `tb_booking` set `read`=1 where (`status`=2 or `status`=3) and `id_user`=$id_user";
 		$this->db->query($query);
 		return true;
 	}
 
 	public function getUnreadDemandBook(){
-		$query = "select count(*) from tb_booking where status=0 and read=0";
+		$query = "select count(*) as notif from `tb_booking` where `status`=0";
 		$result = $this->db->query($query);
 		return $result->result_array();
-	}
-
-	public function updateUnreadDemandBook(){
-		$query = "update tb_booking set read=1 where status=0)";
-		$this->db->query($query);
-		return true;	
 	}
 
 	public function getBookDemand($id_user)

@@ -39,6 +39,19 @@
     .completed{
       background-color:#292B2C;
     }
+
+    .button__badge {
+      background-color: #fa3e3e;
+      border-radius: 2px;
+      color: white;
+     
+      padding: 1px 3px;
+      font-size: 10px;
+      
+      position: absolute; /* Position the badge within the relatively positioned button */
+      top: 0;
+      right: 0;
+    }
     </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,7 +90,12 @@
             <a href="<?php echo site_url('apps/') ?>" ><i class="fa fa-bookmark fa-fw <?php echo isset($apps)?'fa-active':null; ?>"></i>Booking</a>
           </div>
           <div class="col-xs-4 button-menu">
-            <a href="<?php echo site_url('history/') ?>" ><i class="fa fa-clock-o fa-fw <?php echo isset($history)?'fa-active':null; ?>"></i>History</a>
+            <a href="<?php echo site_url('history/') ?>" ><i class="fa fa-clock-o fa-fw <?php echo isset($history)?'fa-active':null; ?>">
+            <?php if(isset($notifUnread[0]['notif'])&&($notifUnread[0]['notif']>0)){ ?>
+              <span class="button__badge"><?php echo $notifUnread[0]['notif']; ?></span>
+            <?php } ?>
+            </i>History
+            </a>
           </div>
           <div class="col-xs-4 button-menu">
             <a href="<?php echo site_url('setting/') ?>" ><i class="fa fa-gear fa-fw <?php echo isset($setting)?'fa-active':null; ?>"></i>Setting</a>

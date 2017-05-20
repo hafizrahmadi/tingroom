@@ -122,7 +122,7 @@
                 <label for="InputUnit">Unit<span style="color:red;">*</span></label> <?php echo form_error('id_unit'); ?>
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-group fa-fw"></i></span>
-                  <select class="form-control" name="id_unit" <?php echo isset($id_lantai)?"disabled='disabled'":null; ?>>
+                  <select class="form-control" name="id_unit" >
                     <option disabled selected value>Pilih Unit</option>
                       <?php  foreach ($unit as $value) { ?>
                         <option value="<?php  echo $value['id_unit'] ?>" <?php echo (isset($id_unit)&&$id_unit==$value['id_unit'])?"selected=selected":null;?>> <?php  echo $value['nama_unit'] ?></option>
@@ -135,10 +135,24 @@
                 <label for="InputUnit">Lokasi<span style="color:red;">*</span></label> <?php echo form_error('id_lantai'); ?>
                   <div class="input-group">                 
                     <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-map-marker fa-fw"></i></span>
-                    <select class="form-control" name="id_lantai" <?php echo isset($id_lantai)?"disabled='disabled'":null; ?>>
+                    <select class="form-control" name="id_lantai" >
                       <option disabled selected value>Pilih lantai</option>
                         <?php  foreach ($lantai as $value) { ?>
-                          <option value="<?php  echo $value['id_lantai'] ?>" <?php echo (isset($id_lantai)&&$id_lantai==$value['id_lantai'])?"selected=selected":null;?>> <?php  echo $value['nama_gedung'].' / '.$value['nama_lantai'] ?></option>
+                        <?php
+                          $lt = $value['nama_lantai'];
+                          $x = $lt % 10;
+                          $y = $lt % 100;
+                          if ($x == 1 && $y != 11) {
+                              $nmlnt = $lt."st Floor";
+                          }else if ($x == 2 && $y != 12) {
+                              $nmlnt = $lt."nd Floor";
+                          }else if ($x == 3 && $y != 13) {
+                              $nmlnt = $lt."rd Floor";
+                          }else{
+                              $nmlnt = $lt."th Floor";
+                          }
+                         ?>
+                          <option value="<?php  echo $value['id_lantai'] ?>" <?php echo (isset($id_lantai)&&$id_lantai==$value['id_lantai'])?"selected=selected":null;?>> <?php  echo ucwords($value['nama_gedung'])." ".$nmlnt ?></option>
                         <?php  } ?>                  
                     </select>
                   </div>
