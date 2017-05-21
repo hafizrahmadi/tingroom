@@ -101,30 +101,8 @@
           $( "#datepicker" ).datepicker({
               dateFormat: 'dd-mm-yy',
               minDate: 'now',
-              maxDate: maxdate,
-              // maxDate: function(date){
-              //     var day = date.getDay();
-              //     if (day==4||day==5||day==6) {
-              //       return '+5d';
-              //     }else if(day==0){
-              //       return '+4d';
-              //     }else {
-              //       return '+3d';
-              //     }
-              // },
-              beforeShowDay: $.datepicker.noWeekends,
-              // beforeShowDay: function(date) {
-              //     var day = date.getDay();
-              //     return [(day != 0 && day != 6), ''];
-              // },
-              // beforeShow: function (input, inst) {
-              //     setTimeout(function () {
-              //         inst.dpDiv.css({
-              //             top: $("#datepicker").offset().top + 35,
-              //             left: $("#datepicker").offset().left
-              //         });
-              //     }, 0);
-              // }
+              maxDate: maxdate,              
+              beforeShowDay: $.datepicker.noWeekends,              
         });
     });
 

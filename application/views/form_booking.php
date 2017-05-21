@@ -2,7 +2,7 @@
 
 <div class="row container-content-2" >
         <div class="col-xs-12 no-padding" >
-          <div class="box-dgrey"><?php echo ucwords($ruangan[0]['nama_gedung'])." <span class='col-lantai'>".$ruangan[0]['nama_lantai']."</span>" ; ?></div>
+          <div class="box-dgrey"><?php echo ucwords($ruangan[0]['nama_gedung'])." <span class='col-lantai'>".$ruangan[0]['nama_lantai']."</span>" ; ?> - For <b style="color:#f39c12;"><?php echo date('d M Y',strtotime($waktu)) ?></b></div>
           
 
           <div class="col-xs-12 box-green no-pointer" >
@@ -34,19 +34,13 @@
             </div>
           </div>
 
-           <div class="col-xs-12">                  
-                <div class="input-group" style="margin-bottom:0px;">  
-                <input type="text" id="datepicker" class="form-control-input" placeholder="Pilih Tanggal Booking." name="waktu">
-
-                 <span class="input-group-addon" id="basic-addon1" style="background-color: #C7C7C8"><i class="fa fa-calendar fa-fw" style="margin-left:-5px;"></i></span>
-                </div>
-          </div>
+           
           
           <div class="col-xs-12">
             <div class="form-group">
-              
+              <input type="hidden" name="waktu" value="<?php echo $waktu ?>">
               <textarea class="form-control textarea" rows="5" id="t_description" name="deskripsi" placeholder="Masukkan deskripsi booking (perihal booking)"></textarea>
-              <button class="btn  btn-block btn-turquoise"  data-href="booking-3.html">Continue</button> 
+              <button class="btn  btn-block btn-turquoise"  data-href="">Continue</button> 
             </div>
           </div>
           </form>

@@ -2,7 +2,7 @@
         
       <div class="row container-content-2" >
         <div class="col-xs-12 no-padding" >
-          <div class="box-dgrey"><?php echo ucwords($lantai[0]['nama_gedung'])." <span class='col-lantai'>".$lantai[0]['nama_lantai']."</span>" ; ?></div>
+          <div class="box-dgrey"><?php echo ucwords($lantai[0]['nama_gedung'])." <span class='col-lantai'>".$lantai[0]['nama_lantai']."</span>" ; ?> - For <b style="color:#f39c12;"><?php echo date('d M Y',strtotime($waktu)) ?></b></div>
           <form action="<?php echo site_url('apps/book_demand') ?>" method="post">
           
           <?php 
@@ -25,7 +25,7 @@
                 foreach ($jadwal as $key) {
                   if ($value['id_ruangan']==$key['id_ruangan']) {
             ?>
-              <div class="funkyradio-default <?php echo $key['status']==2?"reserved":null ?>">
+              <div class="funkyradio-default <?php echo $key['status']==1?"reserved":null ?>">
                   <input type="checkbox" name="jadwal[]" value="<?php echo $key['id_jadwal'] ?>" id="checkbox<?php echo $no_ruang.'_'.$no_jadwal ?>"/>
                   <label for="checkbox<?php echo $no_ruang.'_'.$no_jadwal ?>">
                   <span><?php echo $key['jam_awal'].' - '.$key['jam_akhir'] ?></span>
@@ -34,8 +34,6 @@
                       if ($key['status']==0) {
                         echo "Available";
                       }else if($key['status']==1){
-                        echo "On Demand";
-                      }else if($key['status']==2){
                         echo "Reserved";
                       }
                     ?>

@@ -30,19 +30,20 @@ class Apps extends CI_Controller {
 	}
 
 	public function booking(){
+		// die(var_dump($this->input->post()));
 		if ($this->input->post('id_lantai')!=null) {
 			$this->session->set_userdata('id_lantai',$this->input->post('id_lantai'));
 		}
-		// if ($this->input->post('waktu')!=null) {
-		// 	$this->session->set_userdata('waktu_booking',date('Y-m-d',strtotime($this->input->post('waktu')));
-		// }
+		if ($this->input->post('waktu')!=null) {
+			$this->session->set_userdata('waktu_booking',date('Y-m-d',strtotime($this->input->post('waktu'))));
+		}
 
 		$id_lantai = $this->session->userdata('id_lantai');
-		// $waktu = $this->session->userdata('waktu_booking');
+		$waktu = $this->session->userdata('waktu_booking');
 		$this->data['lantai'] = $this->M_Lantai->getIDLantai($id_lantai);
 		$this->data['ruangan'] = $this->M_Ruangan->getRuanganInLantai($id_lantai);
-		$this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai);
-		// $this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai,$waktu);
+		$this->data['waktu'] = $waktu;
+		$this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai,$waktu);
 		// var_dump($this->data['ruangan']);
 		$this->load->view('view_booking2',$this->data);
 		
@@ -60,6 +61,7 @@ class Apps extends CI_Controller {
 		
 		$id_ruangan = $this->session->userdata('id_ruangan');
 		$jadwal = $this->session->userdata('jadwal');
+		$this->data['waktu'] = $this->session->userdata('waktu_booking');
 		$this->data['ruangan'] = $this->M_Ruangan->getIDRuangan($id_ruangan);
 		$this->data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($jadwal);
 		// var_dump($this->data['jadwal']);
