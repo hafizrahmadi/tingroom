@@ -12,17 +12,17 @@
                 <div class="col-xs-12 name-email"><?php echo $user[0]['email'] ?></div>
                 <div class="col-xs-12">
                     <div class="f-left"><?php echo $user[0]['no_hp'] ?></div>
-                    <div class="f-right link-turquoise" data-href="http://google.com">EDIT</div>
+                    <div class="f-right link-turquoise" data-href="<?php echo site_url('Setting/editprofile') ?>">EDIT</div>
                 </div>
             </div>
               
               <div class="col-xs-12 soft-grey" style="margin-top: 20px;">
             
-              <div class="col-xs-2"><i class="fa fa-question fa-fw "></i></div>
-              <div class="col-xs-10 line-bot">FAQ</div>
+              <div class="col-xs-2" data-href="<?php echo site_url('Faq/') ?>"><i class="fa fa-question fa-fw "></i></div>
+              <div class="col-xs-10 line-bot" data-href="<?php echo site_url('Faq/') ?>">FAQ</div>
 
-              <div class="col-xs-2"><i class="fa fa-lock fa-fw "></i></div>
-              <div class="col-xs-10 line-bot">Change Password</div>
+              <div class="col-xs-2" data-href="<?php echo site_url('Setting/changepassword') ?>"><i class="fa fa-lock fa-fw "></i></div>
+              <div class="col-xs-10 line-bot" data-href="<?php echo site_url('Setting/changepassword') ?>">Change Password</div>
 <!-- 
               <div class="col-xs-2"><i class="fa fa-language fa-fw "></i></div>
               <div class="col-xs-10 line-bot">Change Language</div>

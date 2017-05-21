@@ -9,7 +9,8 @@
     <script src="<?php echo base_url('assets/js/datepicker.js') ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/js/jquery.mobile.datepicker.js') ?>" type="text/javascript"></script>
     <script type="text/javascript">
-
+      
+    
     $('tr[data-href]').on("click", function() {
         $("input[name='id_lantai']").val($(this).data('href'));
         if ($("#datepicker").val()!="") {

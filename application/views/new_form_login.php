@@ -32,12 +32,12 @@
 	            	<a href="#" class="link-white link-forgot">Forgot username or password?</a>
 	            </div>
 	        </form>
-	        <button class="btn btn-orange btn-block btn-sign-up-mobile-view" >SIGN UP</button>
+	        <!-- <button class="btn btn-orange btn-block btn-sign-up-mobile-view" >SIGN UP</button> -->
 		</div>
 		<div class="col-md-8 col-md-offset-1 col-sm-7 container-login-logo ">
 			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 logo-tingroom-white"></div>
 			<div class="col-md-4 col-md-offset-5 col-sm-6 col-sm-offset-3 tingroom-desc">Tingroom helps you reserve a meeting room effectively to collaborate with team! this platform designed with friendly user interface</div>
-			<div class="col-md-4 col-md-offset-5 col-sm-6 col-sm-offset-3 btn-sign-up"><button class="btn btn-orange btn-block " >SIGN UP</button></div>
+			<!-- <div class="col-md-4 col-md-offset-5 col-sm-6 col-sm-offset-3 btn-sign-up"><button class="btn btn-orange btn-block " >SIGN UP</button></div> -->
 			
 		</div>
 	</div>

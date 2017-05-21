@@ -165,12 +165,13 @@ class Auth extends CI_Controller {
 	public function test(){
 		// $key = $this->encryption->create_key(16);
 		// echo $key;
-		// $key = 'sekretaris';
+		// $key = 'user';
 		// $encrypted = password_hash($key,PASSWORD_DEFAULT);
+		
 		// echo $encrypted;
 		// $jebaited = $this->encryption->decrypt($encrypted);
 		// echo $jebaited;
 
-		$this->load->view('view_frontend');
+		// $this->load->view('view_frontend');
 	}
 }

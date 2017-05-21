@@ -3,7 +3,7 @@
 <head>
   <title>Tingroom - Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="<?php echo base_url('assets/js/jquery-1.10.2.min.js') ?>"></script>
+  <!--<script src="<?php echo base_url('assets/js/jquery-1.10.2.min.js') ?>"></script>-->
     <script src="<?php echo base_url('assets/js/bootstrap.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap-datepicker.js') ?>"></script>
     <link href="<?php echo base_url('assets/css/jquery.mobile.datepicker.css') ?>" rel="stylesheet" type="text/css" />

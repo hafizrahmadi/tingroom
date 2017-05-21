@@ -29,6 +29,34 @@ class M_User extends CI_Model
 			return false;
 		}
 	}
+	function cekPassword($password,$id_user){
+		$query = "select * from tb_user where id_user='$id_user'";
+		$result = $this->db->query($query);
+		$usr = $result->result_array();		
+		if (password_verify($password,$usr[0]['password'])) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function changePassword($data){
+		$query = "update tb_user set password='".password_hash($data['password'],PASSWORD_DEFAULT)."' where id_user='".$data['id_user']."'";
+		if ($this->db->query($query)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function editProfile($data){
+		$query = "update tb_user set nama='".$data['nama']."', no_hp='".$data['no_hp']."' where id_user='".$data['id_user']."'";
+		if ($this->db->query($query)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	function register($data){
 		$query = "INSERT INTO tb_user(email,password,nama,no_hp,id_lantai,id_unit,level,status) VALUES 
