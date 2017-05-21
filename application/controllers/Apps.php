@@ -33,10 +33,16 @@ class Apps extends CI_Controller {
 		if ($this->input->post('id_lantai')!=null) {
 			$this->session->set_userdata('id_lantai',$this->input->post('id_lantai'));
 		}
+		// if ($this->input->post('waktu')!=null) {
+		// 	$this->session->set_userdata('waktu_booking',date('Y-m-d',strtotime($this->input->post('waktu')));
+		// }
+
 		$id_lantai = $this->session->userdata('id_lantai');
+		// $waktu = $this->session->userdata('waktu_booking');
 		$this->data['lantai'] = $this->M_Lantai->getIDLantai($id_lantai);
 		$this->data['ruangan'] = $this->M_Ruangan->getRuanganInLantai($id_lantai);
 		$this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai);
+		// $this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai,$waktu);
 		// var_dump($this->data['ruangan']);
 		$this->load->view('view_booking2',$this->data);
 		
@@ -71,7 +77,7 @@ class Apps extends CI_Controller {
 		$this->data['jadwal'] = $this->input->post('jadwal');
 		$this->data['deskripsi'] = $this->input->post('deskripsi');
 		// var_dump($this->data);
-		$this->M_Booking->setBooking($this->data);
+		$this->M_booking->setBooking($this->data);
 		echo "<script>
 					alert('Data booking telah ditambahkan. Tunggu konfirmasi dari sekretaris.');
 					document.location='".site_url('history/')."';

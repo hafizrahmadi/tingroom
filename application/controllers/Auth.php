@@ -10,18 +10,18 @@ class Auth extends CI_Controller {
 		$this->load->model('M_Lantai','',true);
 		$this->load->library('redirect');
 		$this->load->library('encryption');
-		$this->redirect->backToCurrent();
+		
 	}
 
 	public function index()
 	{
-		
+		$this->redirect->backToCurrent();
 		$this->load->view('form_login');
 	}
 
 	public function login()
 	{
-		
+		$this->redirect->backToCurrent();
 		$this->form_validation->set_error_delimiters('<div style="color:#FF0000;">','</div>');
 		$this->form_validation->set_rules('email', 'email', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
 		$this->form_validation->set_rules('password', 'Password', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
@@ -62,13 +62,13 @@ class Auth extends CI_Controller {
 	public function backend()
 	{
 		
-		
+		$this->redirect->backToCurrent();
 		$this->load->view('form_login_backend');
 	}
         
 	public function loginbackend()
 	{
-		
+		$this->redirect->backToCurrent();
 		$this->form_validation->set_error_delimiters('<div class="text-red">','</div>');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
 		$this->form_validation->set_rules('password', 'Password', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
@@ -97,14 +97,14 @@ class Auth extends CI_Controller {
 	}
 
 	public function signup(){
-		
+		$this->redirect->backToCurrent();
 		$data['unit'] = $this->M_Unit->getUnit();
 		$data['lantai'] = $this->M_Lantai->getLantai();
 		$this->load->view('form_register', $data);
 	}
 
 	public function proses_signup(){
-		
+		$this->redirect->backToCurrent();
 		$data['unit'] = $this->M_Unit->getUnit();
 		$data['lantai'] = $this->M_Lantai->getLantai();
 
@@ -148,7 +148,7 @@ class Auth extends CI_Controller {
 		if ($this->session->userdata['logged_in']['level']!=3 ) {
 			$direct='Auth/loginbackend';
 		}else{
-			$direct='Auth/login';
+			$direct='Auth/';
 		}
 		$this->session->unset_userdata('logged_in');
 		// die();

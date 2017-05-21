@@ -41,6 +41,7 @@ $this->load->view('template/sidebar');
                         <th>Nama</th>
                         <th>Phone</th>
                         <th>Lokasi</th>
+                        <th>Unit</th>
                         <th>Level</th>
                         <th>Status</th>
                         <th class="no-sort">Aksi</th>
@@ -60,8 +61,9 @@ $this->load->view('template/sidebar');
                         <td><?php echo $value['nama'] ?></td>
                         <td><?php echo $value['no_hp']!=null?$value['no_hp']:"-" ?></td>
                         <td><?php echo ($value['nama_gedung']!=null||$value['nama_lantai']!=null)?ucwords($value['nama_gedung'])." <span class='col-lantai'>".$value['nama_lantai']."</span>":'-' ; ?></td>
+                        <td><?php echo $value['nama_unit']!=null?$value['nama_unit']:"-" ?></td>
                         <td><?php echo $value['level'] ?></td>
-                        <td><?php echo $value['status'] ?></td>
+                        <td class="<?php echo $value['status']=='Active'?'text-green':'text-red' ?>"><?php echo $value['status'] ?></td>
                         <td>
                             <div class="btn-group">
                              <a href="<?php echo site_url('masteruser/edit/'.$value['id_user']) ?>">

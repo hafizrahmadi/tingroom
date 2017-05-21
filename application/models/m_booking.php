@@ -26,6 +26,28 @@ class M_booking extends CI_Model {
 			}
 		}
 		$this->db->query($query2);
+
+		//<start> set waktu update data status booking/jadwal otomatis
+		$qtime = "select b.id_booking, b.waktu, d.id_det_booking, d.id_jadwal, min(j.jam_awal) as jam_awal
+					from tb_booking b join tb_det_booking d on d.id_booking=b.id_booking
+							join tb_jadwal j on d.id_jadwal=j.id_jadwal
+					where b.id_booking = $id_booking";
+		$resqtime=$this->db->query($qtime);
+		$arr = $resqtime->result_array();
+		$tgl = $arr[0]['waktu'];
+		$jam = $arr[0]['jam_awal'];
+		$waktu = $tgl.' '.$jam;		
+		$waktu_update = date('Y-m-d H:i:s', strtotime($tgl.' '.$jam));
+		//<end> set waktu update otomatis
+
+		//<start> buat event update data status booking otomatis
+		$query3 = "create EVENT event_reject_exp_booking_".$id_booking."
+					ON SCHEDULE
+					AT '".$waktu_update."'
+					DO update `tb_booking` set `status` = 2 where `status`=0 and `id_booking`=$id_booking";
+		$result3 = $this->db->query($query3);
+		//<end> buat event update data status booking otomatis
+
 		return true;
 		
 	}
@@ -62,7 +84,7 @@ class M_booking extends CI_Model {
 						join tb_ruangan r on j.id_ruangan = r.id_ruangan
 						join tb_lantai l on r.id_lantai = l.id_lantai
 						join tb_gedung g on l.id_gedung = g.id_gedung
-					where b.id_user = 2 and b.status = 0 or b.status=1
+					where b.id_user = $id_user and (b.status = 0 or b.status=1)
 					group by (b.id_booking) order by  b.status desc, b.id_booking desc";
 		$result = $this->db->query($query);
 		return $result->result_array();
@@ -73,7 +95,7 @@ class M_booking extends CI_Model {
 		$query = "select b.id_booking, b.waktu, b.status, d.id_jadwal, j.jam_awal, j.jam_akhir
 					from tb_booking b join tb_det_booking d on d.id_booking = b.id_booking
 						join tb_jadwal j on d.id_jadwal = j.id_jadwal
-					where b.id_user = $id_user and b.status = 0 or b.status=1 order by b.id_booking desc";
+					where b.id_user = $id_user and (b.status = 0 or b.status=1) order by b.id_booking desc";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -110,7 +132,7 @@ class M_booking extends CI_Model {
 						join tb_ruangan r on j.id_ruangan = r.id_ruangan
 						join tb_lantai l on r.id_lantai = l.id_lantai
 						join tb_gedung g on l.id_gedung = g.id_gedung
-					where b.id_user = 2 and b.status = 2 or b.status=3
+					where b.id_user = $id_user and (b.status = 2 or b.status=3)
 					group by (b.id_booking) order by b.id_booking desc";
 		$result = $this->db->query($query);
 		return $result->result_array();
@@ -121,7 +143,7 @@ class M_booking extends CI_Model {
 		$query = "select b.id_booking, b.waktu, b.status, d.id_jadwal, j.jam_awal, j.jam_akhir
 					from tb_booking b join tb_det_booking d on d.id_booking = b.id_booking
 						join tb_jadwal j on d.id_jadwal = j.id_jadwal
-					where b.id_user = $id_user and b.status = 2 or b.status=3 order by b.id_booking desc";
+					where b.id_user = $id_user and (b.status = 2 or b.status=3) order by b.id_booking desc";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -130,6 +152,11 @@ class M_booking extends CI_Model {
 		// update data status booking jadi rejected
 		$query = "update tb_booking set status=2 where id_booking = $id_booking";
 		$result = $this->db->query($query);
+		
+		// hapus event auto reject booking expired
+		$query2 = "drop event event_reject_exp_booking_".$id_booking;
+		$this->db->query($query2);
+
 		return true;
 	}
 
@@ -155,13 +182,13 @@ class M_booking extends CI_Model {
 		$jam = $arr[0]['jam_akhir'];
 		$waktu = $tgl.' '.$jam;		
 		$waktu_update = date('Y-m-d H:i:s', strtotime($tgl.' '.$jam));
-		//<end> set waktu update otomatis		
+		//<end> set waktu update otomatis
 
 		//<start> buat event update data status booking otomatis
 		$query3 = "create EVENT event_update_booking_".$id_booking."
 					ON SCHEDULE
 					AT '".$waktu_update."'
-					DO update tb_booking set status = 3 where id_booking=$id_booking";
+					DO update `tb_booking` set `status`=3, `read`=0 where `id_booking`=$id_booking";
 		$result3 = $this->db->query($query3);
 		//<end> buat event update data status booking otomatis
 		//<start> buat event update data status jadwal otomatis
@@ -171,6 +198,11 @@ class M_booking extends CI_Model {
 					DO update tb_jadwal set status=0 where id_jadwal in (select d.id_jadwal from tb_det_booking d where d.id_booking = ".$id_booking.")";
 		$result4 = $this->db->query($query4);
 		//<end> buat event update data status booking otomatis
+
+		// hapus event auto reject booking expired
+		$query5 = "drop event event_reject_exp_booking_".$id_booking;
+		$this->db->query($query5);
+
 		return true;
 	}
 	

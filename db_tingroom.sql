@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2017 at 01:27 PM
+-- Generation Time: May 21, 2017 at 12:18 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -37,17 +37,18 @@ CREATE TABLE IF NOT EXISTS `tb_booking` (
   `status` int(11) NOT NULL,
   `read` int(11) NOT NULL,
   `time_created` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_booking`
 --
 
 INSERT INTO `tb_booking` (`id_booking`, `id_user`, `waktu`, `deskripsi`, `status`, `read`, `time_created`) VALUES
-(1, 2, '2017-05-22', 'Untuk meeting bulanan', 2, 0, '2017-05-19 14:42:48'),
-(3, 2, '2017-05-22', 'Untuk lomba dota', 1, 0, '2017-05-19 15:41:04'),
-(4, 2, '2017-05-23', 'Resepsi semhas aan', 0, 0, '2017-05-19 20:34:55'),
-(5, 2, '2017-05-24', 'Meeting sales bulanan', 0, 0, '2017-05-20 18:00:58');
+(1, 2, '2017-05-22', 'Untuk meeting bulanan', 2, 1, '2017-05-19 14:42:48'),
+(3, 2, '2017-05-22', 'Untuk lomba dota', 1, 1, '2017-05-19 15:41:04'),
+(4, 2, '2017-05-23', 'Resepsi semhas aan', 2, 1, '2017-05-19 20:34:55'),
+(5, 2, '2017-05-24', 'Meeting sales bulanan', 1, 1, '2017-05-20 18:00:58'),
+(7, 6, '2017-05-24', 'Tralala', 1, 1, '2017-05-21 15:31:21');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tb_det_booking` (
   `id_det_booking` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_det_booking`
@@ -71,7 +72,8 @@ INSERT INTO `tb_det_booking` (`id_det_booking`, `id_jadwal`, `id_booking`) VALUE
 (2, 3, 1),
 (3, 5, 3),
 (4, 4, 4),
-(5, 6, 5);
+(5, 6, 5),
+(7, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -129,13 +131,12 @@ CREATE TABLE IF NOT EXISTS `tb_jadwal` (
 --
 
 INSERT INTO `tb_jadwal` (`id_jadwal`, `id_ruangan`, `jam_awal`, `jam_akhir`, `status`, `deleted`) VALUES
-(1, 4, '08:00', '08:30', 0, 0),
+(1, 4, '08:00', '08:30', 2, 0),
 (2, 5, '10:00', '10:30', 0, 1),
 (3, 4, '08:30', '09:00', 0, 0),
 (4, 4, '09:00', '09:30', 0, 0),
 (5, 6, '08:00', '08:30', 2, 0),
-(6, 10, '10:00', '10:30', 0, 0),
-(7, 7, '08:00', '08:30', 0, 0);
+(6, 10, '10:00', '10:30', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `tb_ruangan` (
   `proyektor` int(11) NOT NULL,
   `kapasitas` int(11) NOT NULL,
   `deleted` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_ruangan`
@@ -193,7 +194,8 @@ INSERT INTO `tb_ruangan` (`id_ruangan`, `nama_ruangan`, `id_lantai`, `board`, `p
 (8, 'Ruang Hampa', 1, 1, 3, 13, 0),
 (9, 'Ruang Hompimpa', 1, 1, 3, 15, 0),
 (10, 'Ruang Rektor', 1, 1, 2, 8, 0),
-(11, 'Ruang Sekret KBMSI', 1, 3, 3, 10, 0);
+(11, 'Ruang Sekret KBMSI', 1, 3, 3, 10, 0),
+(12, 'Room B', 1, 2, 1, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -234,18 +236,21 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `id_lantai` int(11) DEFAULT NULL,
   `id_unit` int(11) DEFAULT NULL,
   `level` int(11) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL,
+  `deleted` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `no_hp`, `id_lantai`, `id_unit`, `level`, `status`) VALUES
-(1, 'admin', '$2y$10$C.wMwSG2iu9dRdL9MAILiuOlhQ0yRPl0xaTDy5X8mw7hnS0m1GvxC', 'admin', NULL, NULL, NULL, 1, 1),
-(2, 'hafiz.rahmadi@gmail.com', '$2y$10$lAliR428t1bCfy24x/nvxeki6fdewu1yRQ9nizN3AkKlFhYik4AAC', 'Moh. Hafiz Rahmadi', '081913596746', NULL, NULL, 3, 1),
-(3, 'sekretaris', '$2y$10$2.ZeIP2bwJMQnqlO9Z7kme0937vPzNgYRkWs.T84R2E6WGxPK2Wwa', 'Sekretaris', NULL, NULL, NULL, 2, 1),
-(5, 'rahadiyanrei@gmail.com', '$2y$10$Ij/bv7uugj55mgFcBrNAL.Ljwr8HAJArX5w9DInB3mR2xIeM.ewJy', 'Annata Rahadiyan', '081913596746', 1, 1, 3, 0);
+INSERT INTO `tb_user` (`id_user`, `email`, `password`, `nama`, `no_hp`, `id_lantai`, `id_unit`, `level`, `status`, `deleted`) VALUES
+(1, 'admin', '$2y$10$C.wMwSG2iu9dRdL9MAILiuOlhQ0yRPl0xaTDy5X8mw7hnS0m1GvxC', 'admin', '', 1, 3, 1, 1, 0),
+(2, 'hafiz.rahmadi@gmail.com', '$2y$10$lAliR428t1bCfy24x/nvxeki6fdewu1yRQ9nizN3AkKlFhYik4AAC', 'Moh. Hafiz Rahmadi', '081913596746', 1, 3, 3, 1, 0),
+(3, 'sekretaris', '$2y$10$2.ZeIP2bwJMQnqlO9Z7kme0937vPzNgYRkWs.T84R2E6WGxPK2Wwa', 'Sekretaris', '', 1, 3, 2, 1, 0),
+(5, 'rahadiyanrei@gmail.com', '$2y$10$Ij/bv7uugj55mgFcBrNAL.Ljwr8HAJArX5w9DInB3mR2xIeM.ewJy', 'Annata Rahadiyan', '081913596746', 1, 1, 3, 0, 1),
+(6, 'rizkitabetari@gmail.com', '$2y$10$94VUvIReW73AJkhna7MQqOvfVnEAH3jPIW3GmVHX1SG2iPT5PZg0q', 'Rizkita Betari', '0819128459343', 1, 1, 3, 1, 0),
+(7, 'nadya', '$2y$10$sEKKcgSSHUzaj.QdhAPsh.pn3V.4dM2GaYaRbj1OOFln9IoehoMem', 'Nadya R Arimurti', '081913345678', 1, 3, 2, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -317,12 +322,12 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tb_det_booking`
 --
 ALTER TABLE `tb_det_booking`
-  MODIFY `id_det_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_det_booking` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tb_gedung`
 --
@@ -342,7 +347,7 @@ ALTER TABLE `tb_lantai`
 -- AUTO_INCREMENT for table `tb_ruangan`
 --
 ALTER TABLE `tb_ruangan`
-  MODIFY `id_ruangan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_ruangan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tb_unit`
 --
@@ -352,7 +357,7 @@ ALTER TABLE `tb_unit`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
@@ -405,6 +410,18 @@ CREATE DEFINER=`root`@`localhost` EVENT `event_update_booking_3` ON SCHEDULE AT 
 
 DROP EVENT `event_update_det_booking_3`$$
 CREATE DEFINER=`root`@`localhost` EVENT `event_update_det_booking_3` ON SCHEDULE AT '2017-05-22 08:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_jadwal set status=0 where id_jadwal in (select d.id_jadwal from tb_det_booking d where d.id_booking = 3)$$
+
+DROP EVENT `event_update_booking_5`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_booking_5` ON SCHEDULE AT '2017-05-24 10:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_booking set status = 3 where id_booking=5$$
+
+DROP EVENT `event_update_det_booking_5`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_det_booking_5` ON SCHEDULE AT '2017-05-24 10:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_jadwal set status=0 where id_jadwal in (select d.id_jadwal from tb_det_booking d where d.id_booking = 5)$$
+
+DROP EVENT `event_update_booking_7`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_booking_7` ON SCHEDULE AT '2017-05-24 08:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_booking set status = 3 where id_booking=7$$
+
+DROP EVENT `event_update_det_booking_7`$$
+CREATE DEFINER=`root`@`localhost` EVENT `event_update_det_booking_7` ON SCHEDULE AT '2017-05-24 08:30:00' ON COMPLETION NOT PRESERVE ENABLE DO update tb_jadwal set status=0 where id_jadwal in (select d.id_jadwal from tb_det_booking d where d.id_booking = 7)$$
 
 DELIMITER ;
 

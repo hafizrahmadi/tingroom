@@ -36,11 +36,11 @@ $this->load->view('template/sidebar');
               <div class="box-body">
                 <div class="form-group">
                   <label for="InputLevel">Level User<span style="color:red;">*</span></label> <?php echo form_error('level');?>
-                  <select class="form-control" name="level" id="level">                  
+                  <select class="form-control" name="level" id="level" <?php echo isset($id_user)?"disabled='disabled'":null; ?>>
                     <option disabled selected value>Pilih Level user</option>
-                    <option value="0" <?php echo (isset($level)&&$level==1)||(isset($datauser[0]['level'])&&$datauser[0]['level']==1)?"selected=selected":null;?>>Admin</option>
-                    <option value="1" <?php echo (isset($level)&&$level==2)||(isset($datauser[0]['level'])&&$datauser[0]['level']==2)?"selected=selected":null;?>>Sekretaris</option>
-                    <option value="1" <?php echo (isset($level)&&$level==3)||(isset($datauser[0]['level'])&&$datauser[0]['level']==3)?"selected=selected":null;?>>User</option>
+                    <option value="1" <?php echo (isset($level)&&$level==1)||(isset($datauser[0]['level'])&&$datauser[0]['level']==1)?"selected=selected":null;?>>Admin</option>
+                    <option value="2" <?php echo (isset($level)&&$level==2)||(isset($datauser[0]['level'])&&$datauser[0]['level']==2)?"selected=selected":null;?>>Sekretaris</option>
+                    <option value="3" <?php echo (isset($level)&&$level==3)||(isset($datauser[0]['level'])&&$datauser[0]['level']==3)?"selected=selected":null;?>>User</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -55,7 +55,8 @@ $this->load->view('template/sidebar');
                 </div>
                 <div class="form-group">
                   <label for="InputEmailUser">Email / Username<span style="color:red;">*</span></label> <?php echo form_error('email'); ?>
-                  <input type="text" class="form-control" id="inputEmailUser" name="email" placeholder="Masukkan email atau username" value="<?php 
+                  <input type="text" class="form-control" id="inputEmailUser" name="email" placeholder="Masukkan email atau username" <?php echo isset($id_user)?"disabled='disabled'":null; ?>
+                  value="<?php 
                   if(isset($email)){
                     echo $email;
                   }else if(isset($datauser[0]['email'])){
@@ -65,12 +66,12 @@ $this->load->view('template/sidebar');
                 </div>
 
                 <div class="form-group">
-                  <label for="InputPasswordUser">Password<span style="color:red;">*</span></label> <?php echo form_error('password'); ?>
-                  <input type="password" class="form-control" id="inputPasswordUser" name="password" placeholder="Masukkan password" value="<?php echo isset($datauser[0]['password'])?$datauser[0]['password']:null; ?>">
+                  <label for="InputPasswordUser">Password<?php echo !isset($id_user)?"<span style='color:red;'>*</span>":null; ?> </label> <?php echo form_error('password'); ?>
+                  <input type="password" class="form-control" id="inputPasswordUser" name="password" placeholder="Masukkan password" value="">
                 </div>
 
                 <div class="form-group">
-                  <label for="inputConfPasswordUser">Konfirmasi Password<span style="color:red;">*</span></label> <?php echo form_error('conf_password'); ?>
+                  <label for="inputConfPasswordUser">Konfirmasi Password<?php echo !isset($id_user)?"<span style='color:red;'>*</span>":null; ?></label> <?php echo form_error('conf_password'); ?>
                   <input type="password" class="form-control" id="inputConfPasswordUser" name="conf_password" placeholder="Masukkan konfirmasi password" value="">
                 </div>
 
@@ -86,17 +87,19 @@ $this->load->view('template/sidebar');
                 </div>
 
                 <div class="form-group">
-                  <label for="InputUnit">Unit</label> <?php echo form_error('id_unit');?>
+                  <label for="InputUnit">Unit<span style="color:red;">*</span></label> <?php echo form_error('id_unit');?>
                   <select class="form-control" name="id_unit" >
                     <option disabled selected value>Pilih Unit</option>
                       <?php  foreach ($unit as $value) { ?>
-                        <option value="<?php  echo $value['id_unit'] ?>" <?php echo (isset($id_unit)&&$id_unit==$value['id_unit'])?"selected=selected":null;?>> <?php  echo $value['nama_unit'] ?></option>
+                        <option value="<?php 
+                        echo $value['id_unit'] ?>"
+                        <?php echo ((isset($id_unit)&&$id_unit==$value['id_unit'])||(isset($datauser[0]['id_unit'])&&$datauser[0]['id_unit']==$value['id_unit']))?"selected=selected":null;?>> <?php  echo $value['nama_unit'] ?></option>
                       <?php  } ?>                  
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="InputLokasi">Lokasi</label> <?php echo form_error('id_lantai');?>
+                  <label for="InputLokasi">Lokasi<span style="color:red;">*</span></label> <?php echo form_error('id_lantai');?>
                   <select class="form-control" name="id_lantai" >
                       <option disabled selected value>Pilih Lokasi</option>
                         <?php  foreach ($lantai as $value) { ?>
@@ -114,9 +117,19 @@ $this->load->view('template/sidebar');
                               $nmlnt = $lt."th Floor";
                           }
                          ?>
-                          <option value="<?php  echo $value['id_lantai'] ?>" <?php echo (isset($id_lantai)&&$id_lantai==$value['id_lantai'])?"selected=selected":null;?>> <?php  echo ucwords($value['nama_gedung'])." ".$nmlnt ?></option>
+                          <option value="<?php 
+                          echo $value['id_lantai'] ?>"
+                          <?php echo ((isset($id_lantai)&&$id_lantai==$value['id_lantai'])||(isset($datauser[0]['id_lantai'])&&$datauser[0]['id_lantai']==$value['id_lantai']))?"selected=selected":null;?>> <?php  echo ucwords($value['nama_gedung'])." ".$nmlnt ?></option>
                         <?php  } ?>                  
                     </select>
+                </div>
+                <div class="form-group">
+                  <label for="InputStatus">Status Akun<span style="color:red;">*</span></label> <?php echo form_error('status');?>
+                  <select class="form-control" name="status" id="status">
+                    <option disabled selected value>Pilih Status Akun</option>
+                    <option value="0" <?php echo (isset($status)&&$status==0)||(isset($datauser[0]['status'])&&$datauser[0]['status']==0)?"selected=selected":null;?>>Not Active</option>
+                    <option value="1" <?php echo (isset($status)&&$status==1)||(isset($datauser[0]['status'])&&$datauser[0]['status']==1)?"selected=selected":null;?>>Active</option>
+                  </select>
                 </div>
               </div>
               <!-- /.box-body -->

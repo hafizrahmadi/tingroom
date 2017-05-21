@@ -47,23 +47,35 @@ class M_User extends CI_Model
 
 	function setUser($data){
 		if ($data['id_user']=='') {
-			$query = "INSERT INTO tb_user(email,password,nama,no_hp,id_lantai,id_unit,level,status) VALUES 
+			$query = "INSERT INTO tb_user(email,password,nama,no_hp,id_lantai,id_unit,level,status,deleted) VALUES 
 		('".$data['email']."','".
 			password_hash($data['password'],PASSWORD_DEFAULT)."','".
 			$data['nama']."','".
 			$data['no_hp']."',".
 			$data['id_lantai'].",".
 			$data['id_unit'].",".
-			$data['level'].",1)";
+			$data['level'].",".
+			$data['status'].",0)";
 		}else{
-			$query = "UPDATE tb_user SET ".
-			"nama = '".$data['nama']."',".
-			"email = '".$data['email']."',".
-			"password = '".password_hash($data['password'],PASSWORD_DEFAULT)."',".
-			"no_hp = '".$data['no_hp']."',".
-			"id_lantai = '".$data['id_lantai']."',".
-			"id_unit = '".$data['id_unit']."'".
-			" WHERE id_user = ".$data['id_user'];
+			if ($data['password']=='') {
+				$query = "UPDATE `tb_user` SET ".
+							"`nama` = '".$data['nama']."',".
+							"`no_hp` = '".$data['no_hp']."',".
+							"`id_lantai` = '".$data['id_lantai']."',".
+							"`id_unit` = '".$data['id_unit']."',".
+							"`status` = '".$data['status']."'".
+							" WHERE `id_user` = ".$data['id_user'];
+			}else{
+				$query = "UPDATE tb_user SET ".
+							"nama = '".$data['nama']."',".
+							"password = '".password_hash($data['password'],PASSWORD_DEFAULT)."',".
+							"no_hp = '".$data['no_hp']."',".
+							"id_lantai = '".$data['id_lantai']."',".
+							"id_unit = '".$data['id_unit']."',".
+							"status = '".$data['status']."'".
+							" WHERE id_user = ".$data['id_user'];
+			}
+			
 		}
 		if ($this->db->query($query)) {
 			return true;
@@ -94,9 +106,19 @@ class M_User extends CI_Model
 					FROM `tb_user` u left outer join tb_unit un on u.id_unit = un.id_unit
 				    		left outer join tb_lantai l on u.id_lantai = l.id_lantai
 				            left outer join tb_gedung g on l.id_gedung = g.id_gedung
+				    where u.deleted=0
 				    order by u.level, u.id_user asc";
     	$result = $this->db->query($query);
 		return $result->result_array();
+	}
+
+	function deleteUser($id){
+		$query = "update `tb_user` set `deleted`=1 where `id_user`=$id";
+		if ($this->db->query($query)) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
  ?>
