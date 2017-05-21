@@ -101,3 +101,4 @@
             <a href="<?php echo site_url('setting/') ?>" ><i class="fa fa-gear fa-fw <?php echo isset($setting)?'fa-active':null; ?>"></i>Setting</a>
           </div>
         </div>
+

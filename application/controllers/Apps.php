@@ -24,7 +24,7 @@ class Apps extends CI_Controller {
 		
 		// $this->load->view('view_dashboard1',$data);
 		$this->data['lantai'] = $this->M_Lantai->getLantai();
-		$this->load->view('view_booking1',$this->data);
+		$this->load->view('new_view_booking1',$this->data);
 		
 		// echo "<a href='".site_url('auth/logout')."' class='btn btn-default btn-flat'><i class='fa fa-sign-out'></i> Sign out</a>";
 	}

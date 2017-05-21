@@ -16,19 +16,22 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		$this->redirect->backToCurrent();
-		$this->load->view('form_login');
+
+		$this->load->view('new_form_login');
 	}
 
 	public function login()
 	{
 		$this->redirect->backToCurrent();
+
 		$this->form_validation->set_error_delimiters('<div style="color:#FF0000;">','</div>');
 		$this->form_validation->set_rules('email', 'email', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
 		$this->form_validation->set_rules('password', 'Password', 'trim|required',array('trim'=>'','required'=>'Kolom {field} harus diisi.'));
 		$data['email'] = $this->input->post('email',TRUE);
 		$data['password'] = $this->input->post('password',TRUE);
+		// die(var_dump($data));
 		if ($this->form_validation->run()==FALSE) {
-			$this->load->view('form_login',$data);
+			$this->load->view('new_form_login',$data);
 		}else{
 			
 			$level = 3;			
@@ -36,7 +39,7 @@ class Auth extends CI_Controller {
 			if ($result!=FALSE) {
 				if ($result[0]['status']==0) {
 					$data['error_message'] = 'Akun belum dikonfirmasi oleh admin.';
-					$this->load->view('form_login',$data);	
+					$this->load->view('new_form_login',$data);	
 				}else{
 					$session_data = array(
 					'email' => $result[0]['email'],
@@ -53,7 +56,7 @@ class Auth extends CI_Controller {
 				}				
 			}else{
 				$data['error_message'] = 'Email atau Password salah';
-				$this->load->view('form_login',$data);
+				$this->load->view('new_form_login',$data);
 			}			
 		}
         
