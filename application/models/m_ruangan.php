@@ -16,7 +16,7 @@ class M_ruangan extends CI_Model {
 		from tb_lantai l join tb_gedung g on l.id_gedung=g.id_gedung
 		join tb_ruangan r on r.id_lantai = l.id_lantai
 		where r.deleted=0
-		order by r.id_lantai asc";
+		order by r.id_lantai asc, nama_ruangan asc";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}

@@ -83,8 +83,8 @@ $this->load->view('template/sidebar');
                         value="<?php 
                           if (isset($jam_awal)) {
                              echo $jam_awal;
-                           }else if(isset($dataruangan[0]['jam_awal'])){
-                            echo $dataruangan[0]['jam_awal'];
+                           }else if(isset($datajadwal[0]['jam_awal'])){
+                            echo $datajadwal[0]['jam_awal'];
                            }
                          ?>">
 
@@ -101,8 +101,8 @@ $this->load->view('template/sidebar');
                         <input type="text" name="jam_akhir" class="form-control timepicker" id="jam_akhir" value="<?php 
                           if (isset($jam_akhir)) {
                              echo $jam_akhir;
-                           }else if(isset($dataruangan[0]['jam_akhir'])){
-                            echo $dataruangan[0]['jam_akhir'];
+                           }else if(isset($datajadwal[0]['jam_akhir'])){
+                            echo $datajadwal[0]['jam_akhir'];
                            }
                          ?>">
 

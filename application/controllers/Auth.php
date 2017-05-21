@@ -166,10 +166,10 @@ class Auth extends CI_Controller {
 	public function test(){
 		// $key = $this->encryption->create_key(16);
 		// echo $key;
-		// $key = 'user';
-		// $encrypted = password_hash($key,PASSWORD_DEFAULT);
+		$key = 'adminadmin';
+		$encrypted = password_hash($key,PASSWORD_DEFAULT);
 		
-		// echo $encrypted;
+		echo $encrypted;
 		// $jebaited = $this->encryption->decrypt($encrypted);
 		// echo $jebaited;
 
