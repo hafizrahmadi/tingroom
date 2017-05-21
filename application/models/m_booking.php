@@ -70,8 +70,13 @@ class M_booking extends CI_Model {
 		return true;
 	}
 
-	public function getUnreadDemandBook(){
-		$query = "select count(*) as notif from `tb_booking` where `status`=0";
+	public function getUnreadDemandBook($id_lantai){
+		$query = "select count(b.id_booking) as notif 
+					from `tb_booking` b join tb_det_booking d on d.id_booking = b.id_booking
+						join tb_jadwal j on d.id_jadwal = j.id_jadwal
+						join tb_ruangan r on j.id_ruangan = r.id_ruangan
+						join tb_lantai l on r.id_lantai = l.id_lantai
+					where b.status=0 and r.id_lantai=$id_lantai";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}
@@ -100,7 +105,7 @@ class M_booking extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function getBookingDemand(){
+	public function getBookingDemand($id_lantai){
 			$query = "select b.id_booking, b.waktu, b.deskripsi, b.status, u.email, u.nama, r.nama_ruangan, l.nama_lantai, g.nama_gedung, b.time_created
 					from tb_booking b join tb_det_booking d on d.id_booking = b.id_booking
 						join tb_jadwal j on d.id_jadwal = j.id_jadwal
@@ -108,18 +113,19 @@ class M_booking extends CI_Model {
 						join tb_lantai l on r.id_lantai = l.id_lantai
 						join tb_gedung g on l.id_gedung = g.id_gedung
 						join tb_user u on b.id_user = u.id_user
-					where b.status = 0
+					where b.status = 0 and r.id_lantai = $id_lantai
 					group by (b.id_booking) order by b.time_created asc";
 		$result = $this->db->query($query);
 		return $result->result_array();	
 	}
 
-	public function getDetBookingDemand()
+	public function getDetBookingDemand($id_lantai)
 	{
 		$query = "select b.id_booking, b.waktu, b.status,d.id_det_booking, d.id_jadwal, j.jam_awal, j.jam_akhir
 					from tb_booking b join tb_det_booking d on d.id_booking = b.id_booking
 						join tb_jadwal j on d.id_jadwal = j.id_jadwal
-					where b.status = 0  order by b.id_booking desc";
+						join tb_ruangan r on j.id_ruangan = r.id_ruangan
+					where b.status = 0 and r.id_lantai=$id_lantai  order by b.id_booking desc";
 		$result = $this->db->query($query);
 		return $result->result_array();
 	}

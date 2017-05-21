@@ -6,7 +6,7 @@ if(!defined('BASEPATH')) exit ('No direct script access allowed');
 class M_User extends CI_Model
 {
 	function login($email,$password,$level=null){
-		$this->db->select('id_user,email,password,nama,level,status');
+		$this->db->select('id_user,email,password,nama,level,status,id_lantai,id_unit');
 		$this->db->from('tb_user');
 		$this->db->where('email',$email);
 		// $this->db->where('status',1);		

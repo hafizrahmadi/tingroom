@@ -21,14 +21,14 @@ class Demandbooking extends CI_Controller {
 				'session' => $sesi,
 				'demandbooking' => 'active'
 			);
-		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook();
+		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook($this->data['session']['id_lantai']);
 	}
 
 	public function index()
 	{
-		
-		$this->data['booking'] = $this->M_booking->getBookingDemand();				
-		$this->data['detbooking'] = $this->M_booking->getDetBookingDemand();				
+		$id_lantai = $this->data['session']['id_lantai'];
+		$this->data['booking'] = $this->M_booking->getBookingDemand($id_lantai);
+		$this->data['detbooking'] = $this->M_booking->getDetBookingDemand($id_lantai);
 		// die(var_dump($this->data));
 		$this->load->view('view_demand_booking',$this->data);
 

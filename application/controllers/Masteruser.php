@@ -81,7 +81,9 @@ class Masteruser extends CI_Controller {
 		$this->data['status'] = $this->input->post('status',TRUE);
 		// die(var_dump($this->input->post()));
 		if ($this->form_validation->run()==FALSE) {
-			$this->data['datauser'] = $this->M_user->getIDUser($id);
+			if ($id!=null) {
+				$this->data['datauser'] = $this->M_user->getIDUser($id);	
+			}
 			$this->load->view('form_user',$this->data);
 		}else{
 			if ($id==null) {

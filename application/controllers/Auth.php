@@ -86,7 +86,8 @@ class Auth extends CI_Controller {
 				$session_data = array(
 					'email' => $result[0]['email'],
 					'id_user' => $result[0]['id_user'],
-					'level' => $result[0]['level']
+					'level' => $result[0]['level'],
+					'id_lantai' => $result[0]['id_lantai']
 					);
 				$this->session->set_userdata('logged_in',$session_data);
 				$session = $this->session->userdata('logged_in');

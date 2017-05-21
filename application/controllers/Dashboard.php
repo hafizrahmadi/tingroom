@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller {
 		$this->data = array(
 			'session' => $sesi			
 			);
-		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook();
+		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook($this->data['session']['id_lantai']);
 	}	
 
 	public function index()
