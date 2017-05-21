@@ -25,13 +25,13 @@ class Setting extends CI_Controller {
 		$this->data['setedit'] = 'active';
 		$id_user = $this->data['session']['id_user'];
 		$this->data['user'] = $this->M_user->getIDUser($id_user);
-		$this->load->view('view_setting1',$this->data);
+		$this->load->view('new_view_setting1',$this->data);
 		
 		// echo "<a href='".site_url('auth/logout')."' class='btn btn-default btn-flat'><i class='fa fa-sign-out'></i> Sign out</a>";
 	}
 
 	public function logout(){
 		$this->data['setlogout'] = 'active';
-		$this->load->view('view_setting2',$this->data);
+		$this->load->view('new_view_setting2',$this->data);
 	}
 }

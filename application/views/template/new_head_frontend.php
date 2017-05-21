@@ -14,6 +14,19 @@
     <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet" media="screen">
     <link href="<?php echo base_url('assets/css/datepicker.css') ?>" rel="stylesheet" media="screen">
     <link rel="icon" href="<?php echo base_url('assets/img/icons/favico-no-box.png') ?>">
+
+    <style>
+    .accepted{
+      background-color:#f1c40f;
+    }
+    .rejected{
+      background-color:#BA0000;
+    }
+    .completed{
+      background-color:#292B2C;
+    }
+
+    </style>
 </head>
 <body class="bg-img">
   <div class="container-fluid no-padding container-grey">
