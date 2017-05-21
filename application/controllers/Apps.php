@@ -45,7 +45,7 @@ class Apps extends CI_Controller {
 		$this->data['waktu'] = $waktu;
 		$this->data['jadwal'] = $this->M_Jadwal->getJadwalInLantai($id_lantai,$waktu);
 		// var_dump($this->data['ruangan']);
-		$this->load->view('view_booking2',$this->data);
+		$this->load->view('new_view_booking2',$this->data);
 		
 	}
 
@@ -65,7 +65,7 @@ class Apps extends CI_Controller {
 		$this->data['ruangan'] = $this->M_Ruangan->getIDRuangan($id_ruangan);
 		$this->data['jadwal'] = $this->M_Jadwal->getIDArrJadwal($jadwal);
 		// var_dump($this->data['jadwal']);
-		$this->load->view('form_booking',$this->data);
+		$this->load->view('new_form_booking',$this->data);
 	}
 
 	public function proses_book(){

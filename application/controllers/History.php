@@ -27,7 +27,7 @@ class History extends CI_Controller {
 		$this->data['det_booking'] = $this->M_booking->getDetBookDemand($id_user);
 
 		$this->M_booking->updateUnreadBookPro($id_user);
-		$this->load->view('view_history1',$this->data);		
+		$this->load->view('new_view_history1',$this->data);		
 		
 	}
 
