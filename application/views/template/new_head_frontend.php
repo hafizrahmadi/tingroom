@@ -26,6 +26,10 @@
       background-color:#292B2C;
     }
 
+    .confirmed {
+      background-color: #d35400;
+    }
+
     </style>
 </head>
 <body class="bg-img">

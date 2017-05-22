@@ -39,7 +39,7 @@ class M_jadwal extends CI_Model {
 						(select count(de.id_jadwal)
 					    	from tb_jadwal ja join tb_det_booking de on ja.id_jadwal=de.id_jadwal
 					                 join tb_booking bo on de.id_booking = bo.id_booking
-					        where bo.waktu = '$waktu' and bo.status=1 and de.id_jadwal=j.id_jadwal) as status
+					        where bo.waktu = '$waktu' and (bo.status=1 or bo.status=3) and de.id_jadwal=j.id_jadwal) as status
 					from tb_jadwal j join tb_ruangan r on j.id_ruangan = r.id_ruangan
 						join tb_lantai l on r.id_lantai = l.id_lantai
 						join tb_gedung g on l.id_gedung = g.id_gedung

@@ -99,4 +99,14 @@
             }
         }
 
+        function con_conf(){
+            if(confirm("Anda yakin untuk melakukan konfirmasi booking ini ?")){
+                return true;
+
+            }else{
+                window.close();
+                return false;
+            }
+        }
+
 </script>

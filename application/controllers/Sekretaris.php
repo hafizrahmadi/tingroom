@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Demandbooking extends CI_Controller {
+class Sekretaris extends CI_Controller {
 
 	public $data = null;
 
@@ -21,19 +21,32 @@ class Demandbooking extends CI_Controller {
 				'session' => $sesi,
 				'demandbooking' => 'active'
 			);
-		$this->data['notifUnread'] = $this->M_booking->getUnreadDemandBook($this->data['session']['id_lantai']);
+		$this->data['notifDemand'] = $this->M_booking->getUnreadDemandBook($this->data['session']['id_lantai']);
+		$this->data['notifConfirm'] = $this->M_booking->getUnreadConfirmBook($this->data['session']['id_lantai']);
+		$this->session->set_userdata('referred_from', current_url());
 	}
 
 	public function index()
 	{
+		$this->demandbooking();
+	}
+
+	public function demandbooking()
+	{
 		$id_lantai = $this->data['session']['id_lantai'];
 		$this->data['booking'] = $this->M_booking->getBookingDemand($id_lantai);
-		$this->data['detbooking'] = $this->M_booking->getDetBookingDemand($id_lantai);
+		
 		// die(var_dump($this->data));
-		$this->load->view('view_demand_booking',$this->data);
+		$this->load->view('view_demand_booking',$this->data);		
+	}
 
-		// var_dump($data);
-		$this->session->set_userdata('referred_from', current_url());
+	public function confirmbooking()
+	{
+		$id_lantai = $this->data['session']['id_lantai'];
+		$this->data['booking'] = $this->M_booking->getBookingApproved($id_lantai);
+		
+		// die(var_dump($this->data));
+		$this->load->view('view_confirm_booking',$this->data);		
 	}
 
 	public function approve($id_booking)
@@ -42,7 +55,7 @@ class Demandbooking extends CI_Controller {
 			// die(var_dump($this->M_booking->approve($id_booking)));
 			echo "<script>
 					alert('Data booking telah di-approve.');
-					document.location='".site_url('demandbooking/')."';
+					document.location='".site_url('sekretaris/')."';
 				</script>";
 	}
 
@@ -51,8 +64,24 @@ class Demandbooking extends CI_Controller {
 			$this->M_booking->reject($id_booking);
 			echo "<script>
 					alert('Data booking telah di-reject.');
-					document.location='".site_url('demandbooking/')."';
+					document.location='".site_url('sekretaris/')."';
 				</script>";
+	}
+
+	public function confirm($id_booking)
+	{
+			$this->M_booking->confirm($id_booking);
+			echo "<script>
+					alert('Data booking telah di-confirm.');
+					document.location='".site_url('sekretaris/confirmbooking')."';
+				</script>";
+	}
+
+	public function riwayatbooking(){
+		$id_lantai = $this->data['session']['id_lantai'];
+		$this->data['booking'] = $this->M_booking->getHistoryBooking($id_lantai);
+
+		$this->load->view('view_riwayat_booking',$this->data);
 	}
 
 	// public function getRuangan(){

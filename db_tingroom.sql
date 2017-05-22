@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_tingroom`
 --
+DROP DATABASE IF EXISTS `db_tingroom`;
 CREATE DATABASE IF NOT EXISTS `db_tingroom` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `db_tingroom`;
 

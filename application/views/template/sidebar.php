@@ -79,24 +79,30 @@
             <?php }else if($session['level']==2){ ?> 
             <li class="header">PENGELOLAAN DATA BOOKING</li>
             <li>
-                <a href="#">
-                    <i class="fa fa-calendar-o"></i> <span>Status Ruangan</span>
-                </a>
-            </li> 
-             <li>
-                <a href="<?php echo site_url('demandbooking/') ?>">
-                    <i class="fa fa-pencil-square-o"></i> <span>Permintaan Booking 
+                <a href="<?php echo site_url('sekretaris/demandbooking') ?>">
+                    <i class="fa fa-bookmark"></i> <span>Permintaan Booking 
                     <?php 
-                        echo isset($notifUnread[0]['notif'])&&$notifUnread[0]['notif']>0?
-                            "<span class='pull-right-container'><span class='label pull-right bg-red'>".$notifUnread[0]['notif']."</span></span>":
+                        echo isset($notifDemand[0]['notif'])&&$notifDemand[0]['notif']>0?
+                            "<span class='pull-right-container'><span class='label pull-right bg-red'>".$notifDemand[0]['notif']."</span></span>":
                             null; 
                     ?>
                         
                     </span>
                 </a>
             </li> 
+            <li>
+                <a href="<?php echo site_url('sekretaris/confirmbooking') ?>">
+                    <i class="fa fa-pencil-square-o"></i> <span>Konfirmasi Booking
+                    <?php 
+                        echo isset($notifConfirm[0]['notif'])&&$notifConfirm[0]['notif']>0?
+                            "<span class='pull-right-container'><span class='label pull-right bg-red'>".$notifConfirm[0]['notif']."</span></span>":
+                            null; 
+                    ?>
+                    </span>
+                </a>
+            </li>
              <li>
-                <a href="#">
+                <a href="<?php echo site_url('sekretaris/riwayatbooking') ?>">
                     <i class="fa fa-table"></i> <span>Riwayat Booking</span>
                 </a>
             </li> 

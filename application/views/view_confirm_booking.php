@@ -9,13 +9,13 @@ $this->load->view('template/sidebar');
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Permintaan Booking
+        Konfirmasi Booking
     </h1>
 
     <ol class="breadcrumb">
         <li><a href="<?php echo site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <!-- <li><a href="#"></a></li> -->
-        <li class="active">Permintaan Booking</li>
+        <li class="active">Konfirmasi Booking</li>
     </ol>
 </section>
 
@@ -25,7 +25,7 @@ $this->load->view('template/sidebar');
     <!-- Default box -->
     <div class="box" >
         <div class="box-header with-border">
-            <h3 class="box-title">Permintaan Booking</h3>
+            <h3 class="box-title">Konfirmasi Booking</h3>
             <div class="box-tools pull-right">
                 
             </div>
@@ -63,12 +63,12 @@ $this->load->view('template/sidebar');
                             
                         <td>
                             <div class="btn-group">
-                             <a href="<?php echo site_url('sekretaris/approve/'.$value['id_booking']) ?>" onclick="return app_conf();">
-                             <button class="btn btn-xs btn-success"><i class="fa fa-check" style=""></i> Approve</button>
+                             <a href="<?php echo site_url('sekretaris/confirm/'.$value['id_booking']) ?>" onclick="return con_conf();">
+                             <button class="btn btn-xs btn-success"><i class="fa fa-check" style=""></i> Confirm</button>
                              </a>
                               <a href="<?php echo site_url('sekretaris/reject/'.$value['id_booking']) ?>"  onclick="return rej_conf();">
                              <button class="btn btn-xs btn-danger"><i class="fa fa-close" style=""></i> Reject</button>
-                             </a> 
+                             </a>
                             </div>
                         </td>                        
                     </tr>

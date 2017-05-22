@@ -9,13 +9,13 @@ $this->load->view('template/sidebar');
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Permintaan Booking
+        Riwayat Booking
     </h1>
 
     <ol class="breadcrumb">
         <li><a href="<?php echo site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <!-- <li><a href="#"></a></li> -->
-        <li class="active">Permintaan Booking</li>
+        <li class="active">Riwayat Booking</li>
     </ol>
 </section>
 
@@ -25,7 +25,7 @@ $this->load->view('template/sidebar');
     <!-- Default box -->
     <div class="box" >
         <div class="box-header with-border">
-            <h3 class="box-title">Permintaan Booking</h3>
+            <h3 class="box-title">Riwayat Booking</h3>
             <div class="box-tools pull-right">
                 
             </div>
@@ -43,7 +43,7 @@ $this->load->view('template/sidebar');
                         <th>Tgl Booking</th>
                         <th>Jam Jadwal</th>
                         <th>Deskripsi</th>
-                        <th class="no-sort">Aksi</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,18 +58,26 @@ $this->load->view('template/sidebar');
                         <td><?php echo $value['nama_ruangan'] ?></td>
                         <td><?php echo ($value['nama_gedung']!=null||$value['nama_lantai']!=null)?ucwords($value['nama_gedung'])." <span class='col-lantai'>".$value['nama_lantai']."</span>":'-' ; ?></td>
                         <td><?php echo date('d M Y',strtotime($value['waktu'])); ?></td>
-                        <td><?php echo $value['jam_jadwal'] ?></td>
+                          <td><?php echo $value['jam_jadwal'] ?></td>
                         <td><?php echo $value['deskripsi'] ?></td>
                             
                         <td>
-                            <div class="btn-group">
-                             <a href="<?php echo site_url('sekretaris/approve/'.$value['id_booking']) ?>" onclick="return app_conf();">
-                             <button class="btn btn-xs btn-success"><i class="fa fa-check" style=""></i> Approve</button>
-                             </a>
-                              <a href="<?php echo site_url('sekretaris/reject/'.$value['id_booking']) ?>"  onclick="return rej_conf();">
-                             <button class="btn btn-xs btn-danger"><i class="fa fa-close" style=""></i> Reject</button>
-                             </a> 
-                            </div>
+                          <?php 
+                          if ($value['status']==0) {
+                            echo "On Demand";
+                          }else if ($value['status']==1) {
+                            echo "Approved";
+                          }else if ($value['status']==2) {
+                            echo "Rejected";
+                          }else if ($value['status']==3) {
+                            if ($value['time_expired']>date("Y-m-d H:i:s")) {
+                              echo "Confirmed";
+                            }else {
+                              echo "Completed";
+                            }
+                             
+                          }
+                          ?>
                         </td>                        
                     </tr>
                     <?php 
@@ -102,7 +110,7 @@ $this->load->view('template/js');
 
     $('#tabel').dataTable({
         "columnDefs": [
-        { "targets": 8, "orderable": false, "autoWidth":true}
+        { "targets": 7, "orderable": false, "autoWidth":true}
       ]
       // "paging": true,
       // "lengthChange": false,

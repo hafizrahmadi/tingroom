@@ -17,12 +17,14 @@
 		            <div class="col-xs-4 t-bold"><?php echo $value['nama_ruangan']; ?></div>
 		            <div class="col-xs-8 t-white green-dark"><?php echo ucwords($value['nama_gedung'])." <span class='col-lantai'>".$value['nama_lantai']."</span>" ; ?></div>
 		        </div>
-		        <div class="col-xs-3 box-side <?php echo ($value['status']==1)?'accepted ':null; ?>">
+		        <div class="col-xs-3 box-side <?php echo ($value['status']==1)?'accepted ':null; ?> <?php echo ($value['status']==3)?'confirmed t-white':null; ?>">
 		        	<?php 
 		            if ($value['status']==0) {
 		              echo "On Demand";
 		            } else if($value['status']==1) {
 		              echo "<b>Approved</b>";
+		            }else if ($value['status']==3) {
+		            	echo "<b>Confirmed</b>";
 		            }
 		            ?>
 		        </div>

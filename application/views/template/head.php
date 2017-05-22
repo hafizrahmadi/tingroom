@@ -19,6 +19,7 @@
         <link href="<?php echo base_url('assets/img/LogoTingroomIcon.png') ?>" rel="shortcut icon">
         <!-- DataTables -->
         <link href="<?php echo base_url('assets/AdminLTE-2.0.5/plugins/datatables/dataTables.min.css') ?>" rel="stylesheet" type="text/css" />
+        <link rel="icon" href="<?php echo base_url('assets/img/icons/favico-no-box.png') ?>">
         <script type="text/javascript">
             function conf(){
             if(confirm("Anda yakin untuk menghapus ?")){
